@@ -2,19 +2,19 @@
 
 
 void game_test(){
-    SDL_Window* window = window_init("Pickle Jumper");
-    SDL_Renderer* renderer = rederer_init(window);
+    window_init();//init la const window
+    rederer_init();//init la const render
+    
     DeltaTime dt;
     initDeltaTime(&dt);
     WindowParameter wp;
     window_parameter_init(window, &wp);
-    run(window, renderer, &dt, &wp);
+    run(&dt, &wp);
 }
 
 
 
-void run(SDL_Window* window, SDL_Renderer* renderer, DeltaTime *dt, WindowParameter *wp){
-    int i;
+void run(DeltaTime *dt, WindowParameter *wp){
     Sprite sprite;
     sprite_init(renderer,&sprite, "assets/pickle/green_pickle.png", 100, 100, 16, 32 );
     while (wp->runing) {

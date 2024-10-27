@@ -9,12 +9,10 @@
 #include"renderer.h"
 #include"deltatime.h"
 #include"sprite.h"
-
 #include"input/sys_input.h"
-
 
 void game_test();
 
-void run(SDL_Window* window, SDL_Renderer* renderer, DeltaTime *dt, WindowParameter *wp);
+void run(DeltaTime *dt, WindowParameter *wp);
 
 #endif //GAME_H

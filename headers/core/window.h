@@ -5,6 +5,9 @@
 #include<SDL2/SDL.h>
 #include<string.h>
 
+extern SDL_Window* window ;
+extern char WIN_TITLE[128];
+
 typedef struct{
     int runing;
     int is_full_screen;
@@ -13,13 +16,13 @@ typedef struct{
     int y_size;
     int x_center;
     int y_center;
-    SDL_Event event
+    SDL_Event event;
 }WindowParameter;
 
 
 
 
-SDL_Window* window_init(char window_name[]);
+void window_init();
 
 void update_window_size_parameter(SDL_Window* window, WindowParameter* wp);
 

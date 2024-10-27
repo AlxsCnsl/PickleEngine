@@ -1,21 +1,22 @@
 #include "../../headers/core/window.h"
 
+char WIN_TITLE[128] = "Pickle Jumper";
+SDL_Window* window = NULL;
 
-SDL_Window* window_init(char window_name[]) {
+void window_init() {
     // Initialiser SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("Erreur lors de l'initialisation de SDL: %s\n", SDL_GetError());
     }
     // Créer une fenêtre
-    SDL_Window* window = SDL_CreateWindow(window_name,
-                                          SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+    window = SDL_CreateWindow(WIN_TITLE, //c'est une const
+                                SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                                           800, 600,
                                           SDL_WINDOW_SHOWN);
     if (window == NULL) {
         printf("Erreur lors de la création de la fenêtre: %s\n", SDL_GetError());
         SDL_Quit();
     }
-    return window;
 }
 
 void update_window_size_parameter(SDL_Window* window, WindowParameter* wp){
