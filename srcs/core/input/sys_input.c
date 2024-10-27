@@ -6,7 +6,7 @@ void get_sys_input(WindowParameter *wp){
             wp->runing = 0;
         } else if (wp->event.type == SDL_KEYDOWN) {
             if (wp->event.key.keysym.sym == SDLK_F11) {// Si on appuie sur F12, basculer entre plein écran et fenêtre
-                toggle_full_screen(window, wp);
+                toggle_full_screen(wp);
             }
         }
     }  

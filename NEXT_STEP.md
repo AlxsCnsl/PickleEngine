@@ -9,3 +9,5 @@ Make
     FOLDER:
         [0]Gride
         [0]Tiles_shit
+        [0]config for launch
+    

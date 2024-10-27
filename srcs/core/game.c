@@ -8,7 +8,7 @@ void game_test(){
     DeltaTime dt;
     initDeltaTime(&dt);
     WindowParameter wp;
-    window_parameter_init(window, &wp);
+    window_parameter_init(&wp);
     run(&dt, &wp);
 }
 
