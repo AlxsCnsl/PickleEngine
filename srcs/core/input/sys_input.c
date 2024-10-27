@@ -1,6 +1,6 @@
 #include "../../../headers/core/input/sys_input.h"
 
-void get_sys_input(SDL_Window* window, WindowParameter *wp){
+void get_sys_input(WindowParameter *wp){
     while (SDL_PollEvent(&wp->event)) {
         if (wp->event.type == SDL_QUIT) {// Si on appuie sur la croix pour close la fenêtre
             wp->runing = 0;

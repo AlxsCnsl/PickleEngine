@@ -6,6 +6,6 @@
 #include<string.h>
 #include "../window.h"
 
-void get_sys_input(SDL_Window* window, WindowParameter *wp);
+void get_sys_input(WindowParameter *wp);
 
 #endif //SYS_INPUT_H

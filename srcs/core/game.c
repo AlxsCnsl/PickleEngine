@@ -13,18 +13,17 @@ void game_test(){
 }
 
 
-
 void run(DeltaTime *dt, WindowParameter *wp){
     Sprite sprite;
-    sprite_init(renderer,&sprite, "assets/pickle/green_pickle.png", 100, 100, 16, 32 );
+    sprite_init(&sprite, "assets/pickle/green_pickle.png", 100, 100, 16, 32 );
     while (wp->runing) {
-        get_sys_input(window, wp);
+        get_sys_input(wp);
         
         //logiqiz de jeux ici vvvvvv
-        SDL_SetRenderDrawColor(renderer, 90, 80, 254, 255);// le BG
+        SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);// le BG
         SDL_RenderClear(renderer);//ça efface tout le render
 
-        display_sprite(renderer, sprite, 100, 100);
+        display_sprite(sprite, 100, 100);
 
         updateDeltaTime(dt,wp->max_fps);
         //printf("FPS:%d\n",dt->fps);
