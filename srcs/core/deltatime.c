@@ -1,7 +1,10 @@
 //deltatime.c===
 #include"../../headers/core/deltatime.h"
 
-void initDeltaTime(DeltaTime* dt) {
+DeltaTime* dt = NULL;
+
+void initDeltaTime() {
+    dt = (DeltaTime*)malloc(sizeof(DeltaTime));
     dt->lastTime = SDL_GetTicks();
     dt->lastFPSUpdate = dt->lastTime;
     dt->deltaTime = 0.0f;
@@ -9,7 +12,7 @@ void initDeltaTime(DeltaTime* dt) {
     dt->fps = 0;
 }
 
-void updateDeltaTime(DeltaTime* dt) {
+void updateDeltaTime() {
     Uint32 currentTime = SDL_GetTicks();
     int frameTime = SDL_GetTicks() - currentTime;
     dt->deltaTime = (currentTime - dt->lastTime) / 1000.0f; // Temps écoulé en secondes
@@ -35,7 +38,7 @@ void updateDeltaTime(DeltaTime* dt) {
     }
 }
 
-int getFPS(DeltaTime* dt) {
+int getFPS() {
     return dt->fps;
 }
 //===

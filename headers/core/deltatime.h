@@ -13,13 +13,15 @@ typedef struct {
     int fps;           // Nombre de FPS
 } DeltaTime;
 
+extern DeltaTime* dt;
+
 // Initialiser DeltaTime
-void initDeltaTime(DeltaTime* dt);
+void initDeltaTime();
 
 // Mettre à jour DeltaTime
-void updateDeltaTime(DeltaTime* dt);
+void updateDeltaTime();
 
 // Obtenir les FPS actuels
-int getFPS(DeltaTime* dt);
+int getFPS();
 
 #endif // DELTATIME_H

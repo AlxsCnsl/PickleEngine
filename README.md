@@ -19,9 +19,7 @@ DEV_LIB_TOOLS;
         /
         extern SDL_Renderer* renderer; [renderer]
         /
-    ==========>
-    ============>
-    ==========>
+    ===================
 
     #WINDOW.*==========
         void window_init();
@@ -35,12 +33,12 @@ DEV_LIB_TOOLS;
 
         void window_parameter_init();
             → initialize the constant "win_parameter"
-    ===================================================
+
 
     #RENDERER.*==========
         void rederer_init()
             → initialize the constant "renderer"
-    ===================================================
+
 
     #DELTATIME.*==========
         void initDeltaTime();
@@ -51,18 +49,17 @@ DEV_LIB_TOOLS;
         
         int getFPS();
             → get actualy FPS
-    ===================================================
+
 
     #GAME.*==========
         void run();
             → run game
-    ===================================================
+
 
     #SYS_INPUT.*==========
         void get_sys_input();
             → get input of engine system interaction
 
-    ===================================================
 
     #SPRITE.*==========
         SDL_Texture* make_texture(char name_img[]);

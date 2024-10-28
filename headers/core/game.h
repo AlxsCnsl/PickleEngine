@@ -13,6 +13,6 @@
 
 void game_test();
 
-void run(DeltaTime *dt);
+void pk_run();
 
 #endif //GAME_H
