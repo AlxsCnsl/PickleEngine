@@ -13,6 +13,6 @@
 
 void game_test();
 
-void run(DeltaTime *dt, WindowParameter *wp);
+void run(DeltaTime *dt);
 
 #endif //GAME_H

@@ -1,3 +1,4 @@
+//deltatime.c===
 #include"../../headers/core/deltatime.h"
 
 void initDeltaTime(DeltaTime* dt) {
@@ -8,7 +9,7 @@ void initDeltaTime(DeltaTime* dt) {
     dt->fps = 0;
 }
 
-void updateDeltaTime(DeltaTime* dt, int max) {
+void updateDeltaTime(DeltaTime* dt) {
     Uint32 currentTime = SDL_GetTicks();
     int frameTime = SDL_GetTicks() - currentTime;
     dt->deltaTime = (currentTime - dt->lastTime) / 1000.0f; // Temps écoulé en secondes
@@ -19,8 +20,8 @@ void updateDeltaTime(DeltaTime* dt, int max) {
     dt->deltaTime = 0.1f;
     }
 
-    if (frameTime < 1000 / max) {
-    SDL_Delay((1000 / max) - frameTime);
+    if (frameTime < 1000 / win_parameter->max_fps) {
+    SDL_Delay((1000 / win_parameter->max_fps) - frameTime);
     }
     
     // Mettre à jour le compteur de frames
@@ -37,3 +38,4 @@ void updateDeltaTime(DeltaTime* dt, int max) {
 int getFPS(DeltaTime* dt) {
     return dt->fps;
 }
+//===

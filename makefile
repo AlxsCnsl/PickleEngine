@@ -27,3 +27,7 @@ $(TARGET): $(OBJ)
 # Nettoyage des fichiers objets et de l'exécutable
 clean:
 	rm -f $(OBJ) $(TARGET)
+
+# Pour afficher tout les .C
+cat:
+	cat $(SRCS)

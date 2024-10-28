@@ -24,10 +24,10 @@ extern WindowParameter* win_parameter;
 
 void window_init();// initialize the constant window 
 
-void update_window_size_parameter(WindowParameter* wp);//change window size
+void update_window_size_parameter();//change window size
 
-void toggle_full_screen(WindowParameter* wp);//switch window mod and fullscreen
+void toggle_full_screen();//switch window mod and fullscreen
 
-void window_parameter_init(WindowParameter* wp);//initialize the constant win_parameter
+void window_parameter_init();//initialize the constant win_parameter
 
 #endif //WINDOW_H

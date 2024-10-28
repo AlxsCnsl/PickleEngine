@@ -1,3 +1,4 @@
+//rendere.c===
 #include "../../headers/core/renderer.h"
 
 SDL_Renderer* renderer = NULL;
@@ -17,3 +18,4 @@ void rederer_init(){
         SDL_Quit();
     }
 }
+//===

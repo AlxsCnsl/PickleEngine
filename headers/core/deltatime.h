@@ -3,6 +3,7 @@
 #define DELTATIME_H
 
 #include <SDL2/SDL.h>
+#include "window.h"
 
 typedef struct {
     Uint32 lastTime;   // Temps de la dernière frame
@@ -16,7 +17,7 @@ typedef struct {
 void initDeltaTime(DeltaTime* dt);
 
 // Mettre à jour DeltaTime
-void updateDeltaTime(DeltaTime* dt, int max);
+void updateDeltaTime(DeltaTime* dt);
 
 // Obtenir les FPS actuels
 int getFPS(DeltaTime* dt);

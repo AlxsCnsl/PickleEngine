@@ -1,23 +1,24 @@
-#include"../../headers/core/game.h"
+//game.c===
 
+#include"../../headers/core/game.h"
 
 void game_test(){
     window_init();//init la const window
     rederer_init();//init la const render
-    
+    window_parameter_init();//init la const win_parameter
+
     DeltaTime dt;
     initDeltaTime(&dt);
-    WindowParameter wp;
-    window_parameter_init(&wp);
-    run(&dt, &wp);
+
+    run(&dt);
 }
 
 
-void run(DeltaTime *dt, WindowParameter *wp){
+void run(DeltaTime *dt){
     Sprite sprite;
     sprite_init(&sprite, "assets/pickle/green_pickle.png", 100, 100, 16, 32 );
-    while (wp->runing) {
-        get_sys_input(wp);
+    while (win_parameter->runing) {
+        get_sys_input();
         
         //logiqiz de jeux ici vvvvvv
         SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);// le BG
@@ -25,7 +26,7 @@ void run(DeltaTime *dt, WindowParameter *wp){
 
         display_sprite(sprite, 100, 100);
 
-        updateDeltaTime(dt,wp->max_fps);
+        updateDeltaTime(dt);
         //printf("FPS:%d\n",dt->fps);
 
         SDL_RenderPresent(renderer);
@@ -34,3 +35,4 @@ void run(DeltaTime *dt, WindowParameter *wp){
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
+//===

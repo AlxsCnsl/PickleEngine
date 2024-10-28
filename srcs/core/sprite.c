@@ -1,3 +1,4 @@
+//sprite.c===
 #include "../../headers/core/sprite.h"
 
 SDL_Texture* make_texture(char name_img[]){
@@ -29,5 +30,5 @@ void display_sprite(Sprite sprite, int x_pose, int y_pose){
     SDL_RenderCopy(renderer, sprite.texture, NULL, &destinationRect);
 }
 
-// ========= futur gride.h =======================
+//===
 
