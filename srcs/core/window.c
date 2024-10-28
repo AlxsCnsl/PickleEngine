@@ -32,7 +32,7 @@ void toggle_full_screen(WindowParameter* wp){//switch window mod and fullscreen
         wp->is_full_screen = 0;
     } else {
         // Passer en plein écran
-        SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN)
+        SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
         wp->is_full_screen = 1;
     }
     update_window_size_parameter(wp);
