@@ -17,8 +17,8 @@ typedef struct {
 }Sprite;
 
 SDL_Texture* make_texture(char name_img[]);
-void sprite_init(Sprite* sprite, char* path_name, int x, int y, int width, int height);
-void display_sprite(Sprite sprite, int x_pose, int y_pose);
+Sprite* sprite_init(char* path_name, int x, int y, int width, int height);
+void display_sprite(Sprite* sprite);
 
 // ========= futur gride.h =======================
 

@@ -3,32 +3,35 @@
 #include"../../headers/core/game.h"
 
 void game_test(){
-    window_init();//init la const window
-    rederer_init();//init la const render
-    initDeltaTime();//init la const dt
-    window_parameter_init();//init la const win_parameter
+
     pk_run();
 }
 
 void pk_run(){
+    window_init();//init la const window
+    rederer_init();//init la const render
+    initDeltaTime();//init la const dt
+    window_parameter_init();//init la const win_parameter
+    //START INIT//=============================================================
 
-    Sprite sprite;
-    sprite_init(&sprite, "assets/pickle/green_pickle.png", 100, 100, 16, 32 );
+    Sprite* sprite = sprite_init("assets/pickle/green_pickle.png", 10, 10, 16, 32 );
 
+    Sprite* palteform = sprite_init("assets/block/basic.png", 10, 42, 16, 16);
+
+    //END INIT//===============================================================
     while (win_parameter->runing) {
         get_sys_input();
-        
-        //logiqiz de jeux ici vvvvvv
-        SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);// le BG
-        SDL_RenderClear(renderer);//ça efface tout le render
+        SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);//BG
+        SDL_RenderClear(renderer);//Clear renderer in window
+        //START LOOP //========================================================
 
-        display_sprite(sprite, 100, 100); 
+        display_sprite(sprite);
+        sprite->y_pose += 10;
+        display_sprite(palteform);
 
+        //END LOOP//===========================================================
         updateDeltaTime();
-        //printf("FPS:%d\n",dt->fps);
-
         SDL_RenderPresent(renderer);
-        //fin de la logique
     }
     SDL_DestroyWindow(window);
     SDL_Quit();
