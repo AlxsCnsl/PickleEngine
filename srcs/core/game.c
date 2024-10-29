@@ -1,11 +1,5 @@
 //game.c===
-
 #include"../../headers/core/game.h"
-
-void game_test(){
-
-    pk_run();
-}
 
 void pk_run(){
     window_init();//init la const window
@@ -15,7 +9,6 @@ void pk_run(){
     //START INIT//=============================================================
 
     Sprite* sprite = sprite_init("assets/pickle/green_pickle.png", 10, 10, 16, 32 );
-
     Sprite* palteform = sprite_init("assets/block/basic.png", 10, 42, 16, 16);
 
     //END INIT//===============================================================

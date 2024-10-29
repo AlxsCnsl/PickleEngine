@@ -11,8 +11,6 @@
 #include"graphic/sprite.h"
 #include"input/sys_input.h"
 
-void game_test();
-
 void pk_run();
 
 #endif //GAME_H

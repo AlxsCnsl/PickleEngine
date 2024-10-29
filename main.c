@@ -5,8 +5,7 @@
 
 
 int main(int argc, char* argv[]) {
-
-    game_test();
+    pk_run();
     return 0;
 }
 //===

@@ -20,7 +20,4 @@ SDL_Texture* make_texture(char name_img[]);
 Sprite* sprite_init(char* path_name, int x, int y, int width, int height);
 void display_sprite(Sprite* sprite);
 
-// ========= futur gride.h =======================
-
-
 #endif //SPRITE_H
