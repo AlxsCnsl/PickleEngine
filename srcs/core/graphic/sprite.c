@@ -1,5 +1,5 @@
 //sprite.c===
-#include "../../headers/core/sprite.h"
+#include "../../../headers/core/graphic/sprite.h"
 
 SDL_Texture* make_texture(char name_img[]){
     // Charger une image depuis un fichier et créer une texture
@@ -19,10 +19,13 @@ SDL_Texture* make_texture(char name_img[]){
 
 Sprite* sprite_init(char* path_name, int x, int y, int width, int height){
     Sprite* sprite = (Sprite*)malloc(sizeof(Sprite));
+    //size
     sprite->x_size = width;
     sprite->y_size = height;
+    //position
     sprite->x_pose = x;
     sprite->y_pose = y;
+    //texture
     sprite->texture = make_texture(path_name);
     return sprite;
 }

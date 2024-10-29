@@ -7,7 +7,7 @@ SRCS = main.c \
 	srcs/core/game.c \
 	srcs/core/renderer.c \
 	srcs/core/deltatime.c \
-	srcs/core/sprite.c \
+	srcs/core/graphic/sprite.c \
 	srcs/core/input/sys_input.c
 
 OBJ = $(SRCS:.c=.o)

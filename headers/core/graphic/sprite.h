@@ -5,7 +5,7 @@
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
 #include<string.h>
-#include"renderer.h"
+#include"../renderer.h"
 
 
 typedef struct {
