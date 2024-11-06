@@ -8,8 +8,11 @@ void pk_run(){
     window_parameter_init();//init la const win_parameter
     //START INIT//=============================================================
 
-    Sprite* sprite = sprite_init("assets/pickle/green_pickle.png", 10, 10, 16, 32 );
-    Sprite* palteform = sprite_init("assets/block/basic.png", 10, 42, 16, 16);
+    Object* pickle = object_init("assets/pickle/eloane_pickle.png", 16, 32);
+    replace_object(pickle, 5, 10);
+    Object* block = object_init("assets/block/basic.png", 16, 16);
+    replace_object(block, 10, 500);
+    int grave = 10;
 
     //END INIT//===============================================================
     while (win_parameter->runing) {
@@ -18,10 +21,13 @@ void pk_run(){
         SDL_RenderClear(renderer);//Clear renderer in window
         //START LOOP //========================================================
 
-        display_sprite(sprite);
-        sprite->y_pose += 10;
-        display_sprite(palteform);
+        display_object(block);
+        display_object(pickle);
 
+        pickle->collide_box->y_speed = grave;
+        y_move_object(pickle, pickle->collide_box->y_speed);
+        check_collision(pickle->collide_box, block->collide_box);
+        
         //END LOOP//===========================================================
         updateDeltaTime();
         SDL_RenderPresent(renderer);

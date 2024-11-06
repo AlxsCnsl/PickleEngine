@@ -5,6 +5,7 @@ char WIN_TITLE[128] = "Pickle Jumper";
 SDL_Window* window = NULL;
 WindowParameter* win_parameter = NULL;
 
+
 void window_init(){// initialize the constant window 
     if (SDL_Init(SDL_INIT_VIDEO) < 0){ //initializ SDL
         printf("Erreur lors de l'initialisation de SDL: %s\n", SDL_GetError());

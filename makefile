@@ -8,7 +8,9 @@ SRCS = main.c \
 	srcs/core/renderer.c \
 	srcs/core/deltatime.c \
 	srcs/core/graphic/sprite.c \
-	srcs/core/input/sys_input.c
+	srcs/core/input/sys_input.c \
+	srcs/core/object/collide_box.c \
+	srcs/core/object/object.c
 
 OBJ = $(SRCS:.c=.o)
 TARGET = picklejumper

@@ -17,21 +17,18 @@ SDL_Texture* make_texture(char name_img[]){
     return texture;
 }
 
-Sprite* sprite_init(char* path_name, int x, int y, int width, int height){
+Sprite* sprite_init(char* path_name, int width, int height){
     Sprite* sprite = (Sprite*)malloc(sizeof(Sprite));
     //size
     sprite->x_size = width;
     sprite->y_size = height;
-    //position
-    sprite->x_pose = x;
-    sprite->y_pose = y;
     //texture
     sprite->texture = make_texture(path_name);
     return sprite;
 }
 
-void display_sprite(Sprite* sprite){
-    SDL_Rect destinationRect = {sprite->x_pose, sprite->y_pose, sprite->x_size, sprite->y_size };// x, y, width, height
+void display_sprite(Sprite* sprite, int x_pose, int y_pose){
+    SDL_Rect destinationRect = {x_pose, y_pose, sprite->x_size, sprite->y_size };// x, y, width, height
     SDL_RenderCopy(renderer, sprite->texture, NULL, &destinationRect);
 }
 
