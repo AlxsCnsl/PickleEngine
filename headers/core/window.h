@@ -5,6 +5,8 @@
 #include<SDL2/SDL.h>
 #include<string.h>
 
+#include "system/configuration.h"
+
 typedef struct{
     int runing;
     int is_full_screen;
@@ -19,8 +21,6 @@ typedef struct{
 extern SDL_Window* window ;
 extern char WIN_TITLE[128];
 extern WindowParameter* win_parameter;
-
-
 
 void window_init();// initialize the constant window 
 

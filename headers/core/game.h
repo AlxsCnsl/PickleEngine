@@ -9,7 +9,7 @@
 #include"renderer.h"
 #include"deltatime.h"
 #include"graphic/sprite.h"
-#include"input/sys_input.h"
+#include"system/sys_input.h"
 #include"object/object.h"
 
 void pk_run();

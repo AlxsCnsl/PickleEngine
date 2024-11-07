@@ -13,7 +13,8 @@ void window_init(){// initialize the constant window
     // make window in creen
     window = SDL_CreateWindow(WIN_TITLE, //WIN_TITLE is constant
                                 SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                                          800, 600,
+                                          get_seting_config("SYS_CONF.txt", "~SIZE_X_SCREEN", 800),
+                                          get_seting_config("SYS_CONF.txt", "~SIZE_Y_SCREEN", 600),
                                           SDL_WINDOW_SHOWN);
     if (window == NULL) {
         printf("Erreur lors de la création de la fenêtre: %s\n", SDL_GetError());
@@ -47,4 +48,5 @@ void window_parameter_init(){//initialize the constant win_parameter
     win_parameter->max_fps = 60;
     update_window_size_parameter();
 }
+
 //===

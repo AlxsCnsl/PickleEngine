@@ -6,12 +6,19 @@ void pk_run(){
     rederer_init();//init la const render
     initDeltaTime();//init la const dt
     window_parameter_init();//init la const win_parameter
+    if(get_seting_config("SYS_CONF.txt", "~OPEN_IN_FULL_SCREEN",0)==1){
+    toggle_full_screen();
+    }
     //START INIT//=============================================================
 
-    Object* pickle = object_init("assets/pickle/eloane_pickle.png", 16, 32);
-    replace_object(pickle, 5, 10);
-    Object* block = object_init("assets/block/basic.png", 16, 16);
-    replace_object(block, 10, 500);
+    Object* pickle = object_init("assets/pickle/test_green_pickle.png", 32, 64);
+    replace_object(pickle, 12, 10);
+
+    Object* pickle2 = object_init("assets/pickle/test_yelow_pickle.png", 32, 64);
+    replace_object(pickle2, 120, 10);
+
+    Object* block = object_init("assets/block/basic.png", 1024,64 );
+    replace_object(block, -150, 450);
     int grave = 10;
 
     //END INIT//===============================================================
@@ -23,10 +30,16 @@ void pk_run(){
 
         display_object(block);
         display_object(pickle);
+        display_object(pickle2);
 
         pickle->collide_box->y_speed = grave;
+        pickle2->collide_box->y_speed = grave;
+
         y_move_object(pickle, pickle->collide_box->y_speed);
+        y_move_object(pickle2, pickle2->collide_box->y_speed);
+
         check_collision(pickle->collide_box, block->collide_box);
+        check_collision(pickle2->collide_box, block->collide_box);
         
         //END LOOP//===========================================================
         updateDeltaTime();
