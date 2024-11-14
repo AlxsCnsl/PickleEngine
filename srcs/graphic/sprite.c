@@ -1,5 +1,5 @@
 //sprite.c===
-#include "../../../headers/core/graphic/sprite.h"
+#include "../../headers/graphic/sprite.h"
 
 SDL_Texture* make_texture(char name_img[]){
     // Charger une image depuis un fichier et créer une texture

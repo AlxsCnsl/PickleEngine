@@ -1,5 +1,5 @@
 //object.c===
-#include "../../../headers/core/object/object.h"
+#include "../../headers/object/object.h"
 
 Object* object_init(char* path_name, int size_x, int size_y){
     Object* object = (Object*)malloc(sizeof(Object));

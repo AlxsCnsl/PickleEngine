@@ -2,8 +2,16 @@
 #define MAIN_H
 
 #include<stdio.h>
-#include"headers/core/window.h"
-#include"headers/core/game.h"
+
+#include<SDL2/SDL.h>
+#include<SDL2/SDL_image.h>
+
+#include"headers/window.h"
+#include"headers/renderer.h"
+#include"headers/deltatime.h"
+#include"headers/graphic/sprite.h"
+#include"headers/system/sys_input.h"
+#include"headers/object/object.h"
 
 int main();
 

@@ -3,15 +3,14 @@ CC = gcc
 CFLAGS = -I/usr/include/SDL2 -Wall -g
 LDFLAGS = -lSDL2 -lSDL2_image
 SRCS = main.c \
-	srcs/core/window.c \
-	srcs/core/game.c \
-	srcs/core/renderer.c \
-	srcs/core/deltatime.c \
-	srcs/core/graphic/sprite.c \
-	srcs/core/system/sys_input.c \
-	srcs/core/system/configuration.c \
-	srcs/core/object/collide_box.c \
-	srcs/core/object/object.c
+	srcs/window.c \
+	srcs/renderer.c \
+	srcs/deltatime.c \
+	srcs/graphic/sprite.c \
+	srcs/system/sys_input.c \
+	srcs/system/configuration.c \
+	srcs/object/collide_box.c \
+	srcs/object/object.c
 
 OBJ = $(SRCS:.c=.o)
 TARGET = picklejumper

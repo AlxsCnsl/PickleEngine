@@ -1,5 +1,5 @@
 //configuration.c===
-#include "../../../headers/core/system/configuration.h" 
+#include "../../headers/system/configuration.h" 
 
 
 int str_debuts_str(char* str1, char* str2){ //Vérifie si str1 est dans str2() (pour le cross OS)
@@ -23,7 +23,7 @@ int get_seting_config(char* file_name, char* target_seting, int default_setting)
     char buffer[256];
     while (fgets(buffer, sizeof(buffer), file)!= NULL &&//while  le while pour ignorer tout jusqu'a la target
     str_debuts_str(target_seting, buffer)){}//while 
-    if(buffer == NULL){
+    if(buffer == NULL){ // à modifié
         printf("[%s] NO SEEK in /%s", target_seting, file_name);
         return default_setting;
     }

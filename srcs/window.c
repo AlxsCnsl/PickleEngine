@@ -1,5 +1,5 @@
 //window.c===
-#include "../../headers/core/window.h"
+#include "../headers/window.h"
 
 char WIN_TITLE[128] = "Pickle Jumper";
 SDL_Window* window = NULL;

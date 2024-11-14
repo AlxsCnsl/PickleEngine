@@ -1,5 +1,5 @@
 //collide_box.c===
-#include "../../../headers/core/object/collide_box.h"
+#include "../../headers/object/collide_box.h"
 
 CollideBox* collide_box_init(int x_size, int y_size){
     CollideBox* returned_box = (CollideBox*)malloc(sizeof(CollideBox));

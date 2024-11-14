@@ -1,4 +1,4 @@
-#include "../../../headers/core/system/sys_input.h"
+#include "../../headers/system/sys_input.h"
 
 void get_sys_input(){
     while (SDL_PollEvent(&win_parameter->event)) {

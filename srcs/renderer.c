@@ -1,5 +1,5 @@
 //rendere.c===
-#include "../../headers/core/renderer.h"
+#include "../headers/renderer.h"
 
 SDL_Renderer* renderer = NULL;
 

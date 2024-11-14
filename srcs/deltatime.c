@@ -1,5 +1,5 @@
 //deltatime.c===
-#include"../../headers/core/deltatime.h"
+#include"../headers/deltatime.h"
 
 DeltaTime* dt = NULL;
 
