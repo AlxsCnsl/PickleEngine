@@ -5,7 +5,7 @@
 600
 
 ~OPEN_IN_FULL_SCREEN
-1
+0
 
 ~MAX_FPS
 60

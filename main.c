@@ -13,6 +13,8 @@ int main(int argc, char* argv[]) {
     if(get_seting_config("SYS_CONF.txt", "~OPEN_IN_FULL_SCREEN",0)==1){
     toggle_full_screen();
     }
+
+
     //START INIT//===================================================================
     //|
 
@@ -32,6 +34,7 @@ int main(int argc, char* argv[]) {
         get_sys_input();
         SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);//BG
         SDL_RenderClear(renderer);//Clear renderer in window
+
         //START LOOP //===============================================================
         //|
         
@@ -44,9 +47,11 @@ int main(int argc, char* argv[]) {
 
         y_move_object(pickle, pickle->collide_box->y_speed);
         y_move_object(pickle2, pickle2->collide_box->y_speed);
+        
 
         check_collision(pickle->collide_box, block->collide_box);
         check_collision(pickle2->collide_box, block->collide_box);
+
 
         //|
         //END LOOP//===========================================================

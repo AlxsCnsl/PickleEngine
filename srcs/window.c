@@ -35,7 +35,7 @@ void toggle_full_screen(){//switch window mod and fullscreen
         win_parameter->is_full_screen = 0;
     } else {
         // Passer en plein écran
-        SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+        SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
         win_parameter->is_full_screen = 1;
     }
     update_window_size_parameter();

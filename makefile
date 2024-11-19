@@ -1,7 +1,7 @@
 # Variables
 CC = gcc
 CFLAGS = -I/usr/include/SDL2 -Wall -g
-LDFLAGS = -lSDL2 -lSDL2_image
+LDFLAGS = lib/libSDL2.a lib/libSDL2_image.a -lm
 SRCS = main.c \
 	srcs/window.c \
 	srcs/renderer.c \
