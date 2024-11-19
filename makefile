@@ -8,6 +8,7 @@ SRCS = main.c \
 	srcs/deltatime.c \
 	srcs/graphic/sprite.c \
 	srcs/system/sys_input.c \
+	srcs/system/game_input.c \
 	srcs/system/configuration.c \
 	srcs/object/collide_box.c \
 	srcs/object/object.c

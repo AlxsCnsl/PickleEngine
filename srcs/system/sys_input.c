@@ -8,6 +8,7 @@ void get_sys_input(){
             if (win_parameter->event.key.keysym.sym == SDLK_F11) {// Si on appuie sur F12, basculer entre plein écran et fenêtre
                 toggle_full_screen(win_parameter);
             }
+
         }
     }  
 }

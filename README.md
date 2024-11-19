@@ -48,88 +48,69 @@ int check_left_collision(CollideBox* box_one, CollideBox* box_two);
 ### le clavier:
 
 ```cpp
-if (win_parameter->event.key.keysym.sym  == SDL_KEY){}
+intkeyboard_press_check(SDL_Scancode key_check)
 ```
 
-"SDL_KEY" peut etre remplaçé:
+Liste des SDL_Scancode :
 
-Lettres (alphabet)
+    !!!par raport aux qwerty!!!
+    
+    SDL_SCANCODE_A à SDL_SCANCODE_Z : Touches A à Z (en majuscules).
+    SDL_SCANCODE_1 à SDL_SCANCODE_9 : Touches numériques 1 à 9 sur la ligne supérieure.
+    SDL_SCANCODE_0 : Touche numérique 0 sur la ligne supérieure.
+    SDL_SCANCODE_RETURN : Touche Entrée.
+    SDL_SCANCODE_ESCAPE : Touche Échap.
+    SDL_SCANCODE_BACKSPACE : Touche Retour arrière.
+    SDL_SCANCODE_TAB : Touche Tabulation.
+    SDL_SCANCODE_SPACE : Touche Espace.
+    SDL_SCANCODE_MINUS : Touche moins (-).
+    SDL_SCANCODE_EQUALS : Touche égal (=).
+    SDL_SCANCODE_LEFTBRACKET : Touche crochet gauche ([).
+    SDL_SCANCODE_RIGHTBRACKET : Touche crochet droit (]).
+    SDL_SCANCODE_BACKSLASH : Touche barre oblique inversée ().
+    SDL_SCANCODE_SEMICOLON : Touche point-virgule (;).
+    SDL_SCANCODE_QUOTE : Touche apostrophe (').
+    SDL_SCANCODE_COMMA : Touche virgule (,).
+    SDL_SCANCODE_PERIOD : Touche point (.).
+    SDL_SCANCODE_SLASH : Touche barre oblique (/).
+    SDL_SCANCODE_CAPSLOCK : Touche Verr Maj.
+    SDL_SCANCODE_F1 à SDL_SCANCODE_F12 : Touches F1 à F12.
+    SDL_SCANCODE_PRINTSCREEN : Touche Impr écran.
+    SDL_SCANCODE_SCROLLLOCK : Touche Arrêt défil.
+    SDL_SCANCODE_PAUSE : Touche Pause.
+    SDL_SCANCODE_INSERT : Touche Ins.
+    SDL_SCANCODE_HOME : Touche Accueil.
+    SDL_SCANCODE_PAGEUP : Touche Page Up.
+    SDL_SCANCODE_PAGEDOWN : Touche Page Down.
+    SDL_SCANCODE_DELETE : Touche Suppr.
+    SDL_SCANCODE_END : Touche Fin.
+    SDL_SCANCODE_RIGHT : Flèche droite.
+    SDL_SCANCODE_LEFT : Flèche gauche.
+    SDL_SCANCODE_DOWN : Flèche bas.
+    SDL_SCANCODE_UP : Flèche haut.
+    SDL_SCANCODE_NUMLOCKCLEAR : Touche Num Lock.
+    SDL_SCANCODE_KP_DIVIDE : Touche Diviser (pavé numérique).
+    SDL_SCANCODE_KP_MULTIPLY : Touche Multiplier (pavé numérique).
+    SDL_SCANCODE_KP_MINUS : Touche Moins (pavé numérique).
+    SDL_SCANCODE_KP_PLUS : Touche Plus (pavé numérique).
+    SDL_SCANCODE_KP_ENTER : Touche Entrée (pavé numérique).
+    SDL_SCANCODE_KP_1 à SDL_SCANCODE_KP_9 : Touches numériques 1 à 9 (pavé numérique).
+    SDL_SCANCODE_KP_0 : Touche numérique 0 (pavé numérique).
+    SDL_SCANCODE_KP_PERIOD : Touche point (pavé numérique).
+    SDL_SCANCODE_NONUSHASH : Touche # (pavé numérique, selon la disposition du clavier).
+    SDL_SCANCODE_KP_EQUALS : Touche égal (pavé numérique).
+    SDL_SCANCODE_LCTRL, SDL_SCANCODE_LSHIFT, SDL_SCANCODE_LALT, SDL_SCANCODE_LGUI : Touche de contrôle gauche, Maj gauche, Alt gauche, GUI gauche.
+    SDL_SCANCODE_RCTRL, SDL_SCANCODE_RSHIFT, SDL_SCANCODE_RALT, SDL_SCANCODE_RGUI : Touche de contrôle droit, Maj droite, Alt droite, GUI droit.
+    SDL_SCANCODE_MENU : Touche Menu (généralement utilisée pour ouvrir le menu de l'application).
+    SDL_SCANCODE_LSUPER, SDL_SCANCODE_RSUPER : Touche Super gauche/droit (Windows/Command).
+    SDL_SCANCODE_KP_COMMA : Touche virgule (pavé numérique).
 
-    SDLK_a à SDLK_z : touches de a à z
-    SDLK_A à SDLK_Z : touches de A à Z (les majuscules sont gérées via la touche Maj)
+Codes pour les touches de modification (majuscule, etc.) :
 
-Nombres
+    SDL_SCANCODE_LSHIFT, SDL_SCANCODE_RSHIFT : Maj gauche et droite.
+    SDL_SCANCODE_LCTRL, SDL_SCANCODE_RCTRL : Contrôle gauche et droit.
+    SDL_SCANCODE_LALT, SDL_SCANCODE_RALT : Alt gauche et droit.
 
-    SDLK_0 à SDLK_9 : chiffres de 0 à 9
+Codes pour les touches de fonction supplémentaires :
 
-Touches de fonction
-
-    SDLK_F1 à SDLK_F12 : touches de fonction F1 à F12
-
-Touches de direction
-
-    SDLK_UP : flèche haut
-    SDLK_DOWN : flèche bas
-    SDLK_LEFT : flèche gauche
-    SDLK_RIGHT : flèche droite
-
-Touches de contrôle
-
-    SDLK_RETURN : Entrée
-    SDLK_ESCAPE : Échap
-    SDLK_BACKSPACE : Retour arrière
-    SDLK_TAB : Tabulation
-    SDLK_SPACE : Espace
-    SDLK_DELETE : Suppr
-
-Modificateurs
-
-    SDLK_LSHIFT : Maj gauche
-    SDLK_RSHIFT : Maj droite
-    SDLK_LCTRL : Ctrl gauche
-    SDLK_RCTRL : Ctrl droite
-    SDLK_LALT : Alt gauche
-    SDLK_RALT : Alt droite
-    SDLK_LGUI : Touche Windows/Commande gauche
-    SDLK_RGUI : Touche Windows/Commande droite
-
-Pavé numérique
-
-    SDLK_KP_0 à SDLK_KP_9 : chiffres du pavé numérique 0 à 9
-    SDLK_KP_ENTER : Entrée du pavé numérique
-    SDLK_KP_PLUS : + du pavé numérique
-    SDLK_KP_MINUS : - du pavé numérique
-    SDLK_KP_MULTIPLY : * du pavé numérique
-    SDLK_KP_DIVIDE : / du pavé numérique
-    SDLK_KP_PERIOD : Point . du pavé numérique
-
-Symboles divers
-
-    SDLK_SEMICOLON : ;
-    SDLK_EQUALS : =
-    SDLK_COMMA : ,
-    SDLK_MINUS : -
-    SDLK_PERIOD : .
-    SDLK_SLASH : /
-    SDLK_BACKSLASH : \
-    SDLK_QUOTE : '
-    SDLK_LEFTBRACKET : [
-    SDLK_RIGHTBRACKET : ]
-    SDLK_GRAVE : ``` (accent grave)
-
-Touches spéciales
-
-    SDLK_PRINTSCREEN : Impr écran
-    SDLK_SCROLLLOCK : Arrêt défil
-    SDLK_PAUSE : Pause
-    SDLK_INSERT : Insert
-    SDLK_HOME : Début
-    SDLK_PAGEUP : Page précédente
-    SDLK_PAGEDOWN : Page suivante
-    SDLK_END : Fin
-    SDLK_CAPSLOCK : Verrouillage des majuscules
-    SDLK_NUMLOCKCLEAR : Verr num
-    SDLK_APPLICATION : Touche Menu
-    SDLK_POWER : Touche d'alimentation
-    SDLK_HELP : Aide
-    SDLK_MENU : Menu
+    SDL_SCANCODE_F13 à SDL_SCANCODE_F24 : Touches F13 à F24 (dépend du clavier et du système).

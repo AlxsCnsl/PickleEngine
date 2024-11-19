@@ -27,38 +27,46 @@ int main(int argc, char* argv[]) {
     Object* block = object_init("assets/block/basic.png", 1024,64 );
     replace_object(block, -150, 450);
     int grave = 10;
-
+    
     //|
     //END INIT//===============================================================
     while (win_parameter->runing) {
         get_sys_input();
-        SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);//BG
         SDL_RenderClear(renderer);//Clear renderer in window
+        SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);//BG
 
         //START LOOP //===============================================================
         //|
         
-        display_object(block);
-        display_object(pickle);
-        display_object(pickle2);
 
         pickle->collide_box->y_speed = grave;
         pickle2->collide_box->y_speed = grave;
 
         y_move_object(pickle, pickle->collide_box->y_speed);
         y_move_object(pickle2, pickle2->collide_box->y_speed);
-        
+
+        if(keyboard_press_check(SDL_SCANCODE_D)){
+            x_move_object(pickle, 5);
+        }
+        if(keyboard_press_check(SDL_SCANCODE_A)){
+            x_move_object(pickle, -5);
+        }
 
         check_collision(pickle->collide_box, block->collide_box);
         check_collision(pickle2->collide_box, block->collide_box);
 
+        display_object(block);
+        display_object(pickle);
+        display_object(pickle2);
 
         //|
         //END LOOP//===========================================================
         updateDeltaTime();
         SDL_RenderPresent(renderer);
     }
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+    SDL_Quit();
     SDL_Quit();
     return 0;
 }

@@ -11,6 +11,7 @@
 #include"headers/deltatime.h"
 #include"headers/graphic/sprite.h"
 #include"headers/system/sys_input.h"
+#include"headers/system/game_input.h"
 #include"headers/object/object.h"
 
 int main();
