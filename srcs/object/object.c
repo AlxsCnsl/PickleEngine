@@ -13,7 +13,7 @@ void display_object(Object* object){
 }
 
 void replace_object(Object* object, int x_pose, int y_pose){
-    object->collide_box->x_pose = x_pose;
+    object->collide_box->x_pose = x_pose ;
     object->collide_box->y_pose = y_pose;
 }
 

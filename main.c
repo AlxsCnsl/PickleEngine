@@ -45,6 +45,8 @@ int main(int argc, char* argv[]) {
         y_move_object(pickle, pickle->collide_box->y_speed);
         y_move_object(pickle2, pickle2->collide_box->y_speed);
 
+        
+        //pour green
         if(keyboard_press_check(SDL_SCANCODE_D)){
             x_move_object(pickle, 5);
         }
@@ -52,12 +54,23 @@ int main(int argc, char* argv[]) {
             x_move_object(pickle, -5);
         }
 
+        //pour yelow
+        if(keyboard_press_check(SDL_SCANCODE_SEMICOLON)){
+            x_move_object(pickle2, 5);
+        }
+        if(keyboard_press_check(SDL_SCANCODE_K)){
+            x_move_object(pickle2, -5);
+        }
+
+
         check_collision(pickle->collide_box, block->collide_box);
         check_collision(pickle2->collide_box, block->collide_box);
 
         display_object(block);
         display_object(pickle);
         display_object(pickle2);
+
+        printf("FPS : %d \n", getFPS());
 
         //|
         //END LOOP//===========================================================
