@@ -1,0 +1,10 @@
+[1]main.cpp
+[0]window.cpp
+[0]renderer.cpp(+correctifs de nom)
+[0]deltatime.cpp(+test de correctifs)
+[0]sys_inpute.cpp
+[0]game_input.cpp
+[1]configuration.cpp
+[0]collide_box.cpp
+[0]object.cpp
+[0]sprite.cpp
