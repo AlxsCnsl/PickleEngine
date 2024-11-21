@@ -1,6 +1,45 @@
 //window.c===
 #include "../headers/window.hpp"
 
+
+bool running;
+bool is_full_screen;
+int max_fps;
+int width;
+int height;
+SDL_Event* event;
+SDL_Window* window;
+std::string title;
+
+
+PkWindow::PkWindow()
+    : running(true), is_full_screen(false), max_fps(60), 
+    width(800), height(600), event(nullptr), window(nullptr), title("Pickle ENGINE"){
+        window = SDL_CreateWindow(title.c_str(),  
+        SDL_WINDOWPOS_CENTERED,         // Position X de la fenêtre
+        SDL_WINDOWPOS_CENTERED,
+        width,
+        height,
+        SDL_WINDOW_SHOWN
+        );
+}
+
+PkWindow::PkWindow(const std::string& window_title);
+PkWindow::~PkWindow();
+
+int PkWindow::get_width()const;
+int PkWindow::get_height()const;
+int PkWindow::get_midle_width()const;
+int PkWindow::get_midle_height()const;
+bool PkWindow::is_running()const;
+
+SDL_Event* PkWindow::get_event()const;
+SDL_Window* PkWindow::get_window()const;
+
+void PkWindow::toggle_full_screen();//switch window mod and fullscreen
+
+
+/*
 char WIN_TITLE[128] = "Pickle Jumper";
 SDL_Window* window = NULL;
 WindowParameter* win_parameter = NULL;
@@ -48,5 +87,6 @@ void window_parameter_init(){//initialize the constant win_parameter
     win_parameter->max_fps = 60;
     update_window_size_parameter();
 }
+*/
 
 //===
