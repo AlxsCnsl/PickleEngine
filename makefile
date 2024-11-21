@@ -1,39 +1,32 @@
 # Variables
 CXX = g++
-CXXFLAGS = -I/usr/include/SDL2 -Wall -g
+CFLAGS = -I/usr/include/SDL2 -Wall -g
 LDFLAGS = lib/libSDL2.a lib/libSDL2_image.a -lm
 
 # Fichiers sources et objets
-SRCS_CPP = main.cpp \
+SRCS = main.cpp \
+			srcs/window.cpp \
 			srcs/system/configuration.cpp \
 
 
-OBJS = $(SRCS_CPP:.cpp=.o)
-
-# Nom de l'exécutable
+OBJ = $(SRCS:.cpp=.o)
 TARGET = picklejumper
 
 # Règle par défaut
 all: $(TARGET)
 
 # Compilation du binaire final
-$(TARGET): $(OBJS)
-	$(CXX) -o $@ $^ $(LDFLAGS)
+$(TARGET): $(OBJ)
+	$(CC) -o $@ $^ $(LDFLAGS)
 
-# Compilation des fichiers .cpp en .o
+# Compilation des fichiers .c en .o
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Nettoyage des fichiers objets et de l'exécutable
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJ) $(TARGET)
 
-# Gestion des dépendances
-depend: $(SRCS_CPP)
-	$(CXX) $(CXXFLAGS) -MM $^ > .depend
-
--include .depend
-
-# Option pour afficher tous les fichiers source
+# Pour afficher tout les .C
 cat:
-	@echo $(SRCS_CPP)
+	cat $(SRCS)

@@ -7,28 +7,31 @@ class PkWindow{
 
     private:
         bool running;
-        bool is_full_screen;
-        int max_fps;
+        bool full_screen;
         int width;
         int height;
-        SDL_Event* event;
         SDL_Window* window;
+        //PkRenderer renderer;
         std::string title;
 
+        SDLWindow* window_init();
     public:
 
-        PkWindow();
+        Pk_Window();
         PkWindow(const std::string& window_title);
         ~PkWindow();
 
+
+        bool is_running()const;
+        bool is_full_screen()const;
         int get_width()const;
         int get_height()const;
         int get_midle_width()const;
         int get_midle_height()const;
-        bool is_running()const;
+        stt::string get_title()const;
 
-        SDL_Event* get_event()const;
         SDL_Window* get_window()const;
+        SDL_Renderer* get_renderer()const;
     
         void toggle_full_screen();//switch window mod and fullscreen
 };

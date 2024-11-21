@@ -1,4 +1,4 @@
-//main.c===
+//main.cpp===
 #include "main.hpp"
 
 //const pour GAME
