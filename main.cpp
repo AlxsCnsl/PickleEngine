@@ -5,9 +5,17 @@
 
 
 int main(int argc, char** argv) {
-    int a(5);
-    std::cout<<"le nombre est: "<< a << std::endl;
-    get_int_seting_config("system_conf.txt", "~MAX_FPS", 80);
+    PkWindow window("Pickle ENGINE");
+    
+    SDL_Event event;
+    while (window.is_running()) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                window.close();
+            }
+        }
+    }
+
     return 0;
 }
 //===

@@ -1,32 +1,34 @@
-# Variables
+# Compilateur et options
 CXX = g++
-CFLAGS = -I/usr/include/SDL2 -Wall -g
-LDFLAGS = lib/libSDL2.a lib/libSDL2_image.a -lm
+CXXFLAGS = -Iinclude/SDL2 -Wall -std=c++17 -Iinclude -g
 
-# Fichiers sources et objets
-SRCS = main.cpp \
-			srcs/window.cpp \
-			srcs/system/configuration.cpp \
+# Répertoires
+SRCDIR = srcs
+LIBDIR = lib
+BINDIR = bin
+BUILDDIR = build
 
+# Fichiers
+SOURCES = main.cpp \
+          $(SRCDIR)/system/window.cpp \
+          $(SRCDIR)/system/configuration.cpp
 
-OBJ = $(SRCS:.cpp=.o)
-TARGET = picklejumper
+OBJECTS = $(addprefix $(BUILDDIR)/, $(SOURCES:.cpp=.o))
+EXECUTABLE = $(BINDIR)/Picle_engine
 
-# Règle par défaut
-all: $(TARGET)
+# Bibliothèques
+LDFLAGS = -L$(LIBDIR) -lSDL2 -lSDL2_image -lSDL2main
 
-# Compilation du binaire final
-$(TARGET): $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
+# Règles
+all: $(EXECUTABLE)
 
-# Compilation des fichiers .c en .o
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(EXECUTABLE): $(OBJECTS)
+	mkdir -p $(BINDIR)
+	$(CXX) $(OBJECTS) -o $@ $(LDFLAGS)
 
-# Nettoyage des fichiers objets et de l'exécutable
+$(BUILDDIR)/%.o: %.cpp
+	mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
 clean:
-	rm -f $(OBJ) $(TARGET)
-
-# Pour afficher tout les .C
-cat:
-	cat $(SRCS)
+	rm -rf $(BUILDDIR) $(EXECUTABLE)

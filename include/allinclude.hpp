@@ -9,6 +9,6 @@
 //#include<SDL2/SDL_image.h>
 
 #include"system/configuration.hpp"
-#include"window.hpp"
+#include"system/window.hpp"
 
 #endif //ALLINCLUDE_H

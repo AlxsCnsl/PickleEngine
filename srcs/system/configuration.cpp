@@ -1,5 +1,5 @@
 //configuration.c===
-#include "../../headers/system/configuration.hpp" 
+#include "../../include/system/configuration.hpp" 
 
 
 int is_int(std::string str){

@@ -6,7 +6,7 @@
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
 
-#include "headers/allinclude.hpp"
+#include "include/allinclude.hpp"
 
 
 int main(int argc, char** argv);
