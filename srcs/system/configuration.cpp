@@ -2,7 +2,7 @@
 #include "../../include/system/configuration.hpp" 
 
 
-int is_int(std::string str){
+int isNumber(std::string str){
     std::istringstream test(str);
     int num;
     test >> num;
@@ -14,7 +14,7 @@ int is_int(std::string str){
     return 0;
 }
 
-int str_to_int(std::string str){
+int strToInt(std::string str){
     std::istringstream iss(str);
     int num;
     iss >> num;
@@ -22,26 +22,26 @@ int str_to_int(std::string str){
 }
 
 
-int get_int_seting_config(std::string file_name, std::string target_seting, int default_setting){
-    std::ifstream file(file_name);
+int getIntSetingConfig(std::string fileName, std::string targetSeting, int defaultSetting){
+    std::ifstream file(fileName);
     if (!file.is_open()) {
-        std::cerr << "Erreur : Impossible d'ouvrir le fichier : "<< file_name <<"\n";
+        std::cerr << "Erreur : Impossible d'ouvrir le fichier : "<< fileName <<"\n";
         return 1;
     }
     std::string line;
     while (std::getline(file, line))
     {
-        if(line == target_seting){
+        if(line == targetSeting){
             std::getline(file, line);
-            if(is_int(line)){
-                int int_string = str_to_int(line);
-                std::cout << "[" << target_seting << "]" << "deviens " << int_string << std::endl;
-                return int_string;
+            if(isNumber(line)){
+                int intString = strToInt(line);
+                std::cout << "[" << targetSeting << "]" << "deviens " << intString << std::endl;
+                return intString;
             }
         }
     }
     file.close();
-    return default_setting;
+    return defaultSetting;
 }
 
 

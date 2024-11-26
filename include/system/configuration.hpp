@@ -3,6 +3,6 @@
 
 #include"../allinclude.hpp"
 
-int get_int_seting_config(std::string file_name, std::string target_seting, int default_setting);
+int getIntSetingConfig(std::string fileName, std::string targetSeting, int defaultSetting);
 
 #endif //CONFIGURATION_H

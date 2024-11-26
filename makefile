@@ -11,7 +11,7 @@ BUILDDIR = build
 # Fichiers
 SOURCES = main.cpp \
           $(SRCDIR)/system/window.cpp \
-          $(SRCDIR)/system/configuration.cpp
+          $(SRCDIR)/system/configuration.cpp \
 
 OBJECTS = $(addprefix $(BUILDDIR)/, $(SOURCES:.cpp=.o))
 EXECUTABLE = $(BINDIR)/Picle_engine

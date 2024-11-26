@@ -9,32 +9,32 @@ class PkWindow{
 
         //var
         bool running;
-        bool full_screen;
+        bool fullScreen;
         int width;
         int height;
         SDL_Window* window;
         std::string title;
 
         //def
-        SDL_Window* window_init(const std::string& window_title, int width, int height);
+        SDL_Window* initWindow(const std::string& windowTitle, int width, int height);
 
     public:
 
         PkWindow();
-        PkWindow(const std::string& window_title);
+        PkWindow(const std::string& windowTitle);
         ~PkWindow();
 
-        bool is_running()const;
-        bool is_full_screen()const;
-        int get_width()const;
-        int get_height()const;
-        int get_midle_width()const;
-        int get_midle_height()const;
-        std::string get_title()const;
+        bool isRunning()const;
+        bool isFullScreen()const;
+        int getWidth()const;
+        int getHeight()const;
+        int getMidleWidth()const;
+        int getMidleHeight()const;
+        std::string getTitle()const;
         
-        SDL_Window* get_window()const;
+        SDL_Window* getWindow()const;
     
-        void toggle_full_screen();//switch window mod and fullscreen
+        void toggleFullScreen();//switch window mod and fullscreen
         void close();
 };
 

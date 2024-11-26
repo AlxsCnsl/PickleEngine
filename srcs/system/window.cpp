@@ -2,10 +2,10 @@
 #include "../include/allinclude.hpp"
 
 
-SDL_Window* PkWindow::window_init(const std::string& window_title, int width, int height){
+SDL_Window* PkWindow::initWindow(const std::string& windowTitle, int width, int height){
     window = SDL_CreateWindow
     (
-        window_title.c_str(),  
+        windowTitle.c_str(),  
         SDL_WINDOWPOS_CENTERED,         // Position X de la fenêtre
         SDL_WINDOWPOS_CENTERED,
         width,
@@ -21,15 +21,15 @@ SDL_Window* PkWindow::window_init(const std::string& window_title, int width, in
 }
 
 PkWindow::PkWindow()
-    : running(true), full_screen(false),
+    : running(true), fullScreen(false),
     width(800), height(600), window(nullptr), title("Pickle ENGINE"){
-        window = window_init("Pickle ENGINE", width, height);
+        window = initWindow("Pickle ENGINE", width, height);
 }
 
-PkWindow::PkWindow(const std::string& window_title)
-    : running(true), full_screen(false),
-    width(800), height(600), window(nullptr), title(window_title){
-        window = window_init(title, width, height);
+PkWindow::PkWindow(const std::string& windowTitle)
+    : running(true), fullScreen(false),
+    width(800), height(600), window(nullptr), title(windowTitle){
+        window = initWindow(title, width, height);
 }
 
 
@@ -39,47 +39,47 @@ PkWindow::~PkWindow(){
         }
 }
 
-bool PkWindow::is_running()const{
+bool PkWindow::isRunning()const{
     return running;
 }
 
-bool PkWindow::is_full_screen()const{
-    return full_screen;
+bool PkWindow::isFullScreen()const{
+    return fullScreen;
 }
 
-int PkWindow::get_width()const{
+int PkWindow::getWidth()const{
     return width;
 }
 
-int PkWindow::get_height()const{
+int PkWindow::getHeight()const{
     return height;
 }
 
-int PkWindow::get_midle_width()const{
+int PkWindow::getMidleWidth()const{
     return width/2;
 }
 
-int PkWindow::get_midle_height()const{
+int PkWindow::getMidleHeight()const{
     return height/2;
 }
 
-std::string PkWindow::get_title()const{
+std::string PkWindow::getTitle()const{
     return title;
 }
 
-SDL_Window* PkWindow::get_window()const{
+SDL_Window* PkWindow::getWindow()const{
     return window;
 }
 
-void PkWindow::toggle_full_screen(){
-    if (is_full_screen()) {
+void PkWindow::toggleFullScreen(){
+    if (isFullScreen()) {
         // Revenir en mode fenêtre
         SDL_SetWindowFullscreen(window, 0);
-        full_screen = false;
+        fullScreen = false;
     } else {
         // Passer en plein écran
         SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
-        full_screen = true;
+        fullScreen = true;
     }
 }
 
