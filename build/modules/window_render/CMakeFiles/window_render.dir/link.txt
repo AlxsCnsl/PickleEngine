@@ -1,0 +1,2 @@
+/usr/bin/ar qc libwindow_render.a CMakeFiles/window_render.dir/src/window_render.cpp.o
+/usr/bin/ranlib libwindow_render.a

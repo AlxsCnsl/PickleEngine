@@ -1,0 +1,13 @@
+# modules/CMakeLists.txt
+
+# Rechercher tous les sous-dossiers de modules
+file(GLOB MODULE_DIRS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*")
+
+foreach(MODULE ${MODULE_DIRS})
+    if(IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/${MODULE}")
+        if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${MODULE}/CMakeLists.txt")
+            message(STATUS "Ajout du module: ${MODULE}")
+            add_subdirectory(${MODULE})
+        endif()
+    endif()
+endforeach()
