@@ -5,5 +5,5 @@
         "libs" : ["SDL3"],
         "modules" : []  
     },
-    "fonctions" :[]
+    "functions" :[]
 }
