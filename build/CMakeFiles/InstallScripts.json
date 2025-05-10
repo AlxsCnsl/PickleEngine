@@ -1,9 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/alexisconsolo/Projects/PickleEngine/build/cmake_install.cmake",
-		"/home/alexisconsolo/Projects/PickleEngine/build/modules/cmake_install.cmake",
-		"/home/alexisconsolo/Projects/PickleEngine/build/modules/window_render/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
