@@ -15,7 +15,7 @@
 | Module Name         | Description                               |
 |---------------------|-------------------------------------------|
 | `window_render`     | Simplified classes for SDL3 windows       |
-
+| `app_loop_sdl3`     | Simplified loops for your app             |
 ---
 
 ## 🔧 Building

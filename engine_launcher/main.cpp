@@ -1,26 +1,12 @@
 #include <iostream>
 #include <window_render/window_render.hpp>
+#include <app_loop_sdl3/app_loop_sdl3.hpp>
 
 int main() {
     WindowRender window("PickleEngine", 800, 600);
-    if (!window.init()) return -1;
+    AppLoopSdl3 loop(window);
 
-    bool running = true;
-    float deltaTime = 0.016f;
-    int frameCount = 0;
-
-    while (running) {
-        SDL_Event event;
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_EVENT_QUIT) {
-                running = false;
-            }
-        }
-    
-        window.render();
-        SDL_Delay(16);
-    }
-    
+    loop.run();
 
     return 0;
 }

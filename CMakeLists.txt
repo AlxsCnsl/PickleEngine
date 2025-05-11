@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(GameEngine)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # C++20
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -10,6 +12,16 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(SDL3_DIR "${CMAKE_SOURCE_DIR}/libs/SDL3")
 
 # Ajouter les répertoires d'inclusions nécessaires
+
+# Trouve tous les modules dans /modules
+file(GLOB_RECURSE MODULE_DIRS RELATIVE ${CMAKE_SOURCE_DIR} modules/*)
+
+foreach(MODULE ${MODULE_DIRS})
+    if (EXISTS "${CMAKE_SOURCE_DIR}/${MODULE}/include")
+        include_directories("${CMAKE_SOURCE_DIR}/${MODULE}/include")
+    endif()
+endforeach()
+
 include_directories(
     ${SDL3_DIR}/include
     ${CMAKE_SOURCE_DIR}/core  # Ajout explicite de core ici
@@ -40,12 +52,10 @@ add_executable(engine_launcher
 # Lier SDL3 et les librairies de base avec engine_launcher
 target_link_libraries(engine_launcher
     PRIVATE
-        SDL3
+        ${SDL3_DIR}/lib/libSDL3.a
         pthread
         dl
         m
-
-
 )
 
 # Lier automatiquement PickleEngine avec engine_launcher

@@ -1,6 +1,3 @@
-# modules/CMakeLists.txt
-
-# Rechercher tous les sous-dossiers de modules
 file(GLOB MODULE_DIRS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*")
 
 foreach(MODULE ${MODULE_DIRS})

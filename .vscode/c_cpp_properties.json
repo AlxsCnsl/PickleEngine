@@ -3,7 +3,9 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+		"${workspaceFolder}/modules/window_render/include",
+
+        	"${workspaceFolder}/libs/SDL3/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

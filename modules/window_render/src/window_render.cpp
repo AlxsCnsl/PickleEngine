@@ -1,7 +1,7 @@
 #include <window_render/window_render.hpp>
 
 WindowRender::WindowRender(const std::string& title, int width, int height)
-    : title(title), width(width), height(height) {}
+:title(title), width(width), height(height) {}
 
 WindowRender::~WindowRender() {
     shutdown();
@@ -17,7 +17,7 @@ bool WindowRender::init() {
     if (!window) {
         std::cerr << "Window creation failed: " << SDL_GetError() << std::endl;
         return false;
-    }
+    } 
 
     renderer = SDL_CreateRenderer(window, NULL);
     if (!renderer) {
