@@ -5,7 +5,8 @@
             "includePath": [
 		"${workspaceFolder}/modules/window_render/include",
 
-        	"${workspaceFolder}/libs/SDL3/include"
+        	"${workspaceFolder}/libs/SDL3/include",
+		"${workspaceFolder]/libs/SDL3_image/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

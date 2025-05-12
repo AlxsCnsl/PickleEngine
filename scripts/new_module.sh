@@ -80,7 +80,7 @@ target_include_directories($MODULE_NAME
 )
 
 # Link SDL3 to $MODULE_NAME
-target_link_libraries($MODULE_NAME PRIVATE \${libs_output} \${modules_output})
+target_link_libraries($MODULE_NAME PUBLIC \${libs_output} \${modules_output})
 
 # Ensure that PickleEngine uses $MODULE_NAME if present
 if(TARGET PickleEngine)

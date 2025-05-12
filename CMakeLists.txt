@@ -1,62 +1,63 @@
 cmake_minimum_required(VERSION 3.16)
-project(GameEngine)
+project(GameEngine LANGUAGES CXX)
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-# C++20
+# 🧱 Options générales
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# SDL3 static linking
+
+# 📁 Répertoires de libs locales
 set(SDL3_DIR "${CMAKE_SOURCE_DIR}/libs/SDL3")
+set(SDL3_IMGDIR "${CMAKE_SOURCE_DIR}/libs/SDL3_image")
 
-# Ajouter les répertoires d'inclusions nécessaires
+# 📚 Bibliothèque statique SDL3
+add_library(SDL3 STATIC IMPORTED)
+set_target_properties(SDL3 PROPERTIES
+    IMPORTED_LOCATION "${SDL3_DIR}/lib/libSDL3.a"
+    INTERFACE_INCLUDE_DIRECTORIES "${SDL3_DIR}/include"
+)
 
-# Trouve tous les modules dans /modules
-file(GLOB_RECURSE MODULE_DIRS RELATIVE ${CMAKE_SOURCE_DIR} modules/*)
+# 📚 Bibliothèque statique SDL3_image
+add_library(SDL3_image STATIC IMPORTED)
+set_target_properties(SDL3_image PROPERTIES
+    IMPORTED_LOCATION "${SDL3_IMGDIR}/lib/libSDL3_image.a"
+    INTERFACE_INCLUDE_DIRECTORIES "${SDL3_IMGDIR}/include"
+)
 
-foreach(MODULE ${MODULE_DIRS})
-    if (EXISTS "${CMAKE_SOURCE_DIR}/${MODULE}/include")
-        include_directories("${CMAKE_SOURCE_DIR}/${MODULE}/include")
+
+# 🧩 Bibliothèque principale du moteur
+add_library(PickleEngine INTERFACE)
+target_include_directories(PickleEngine INTERFACE
+    ${CMAKE_SOURCE_DIR}/core
+    ${CMAKE_SOURCE_DIR}/modules
+    ${SDL3_DIR}/include
+    ${SDL3_IMGDIR}/include
+)
+target_link_libraries(PickleEngine INTERFACE SDL3 SDL3_image)
+
+
+# 🔁 Inclure automatiquement les dossiers /modules/*/include
+file(GLOB_RECURSE MODULE_INCLUDE_DIRS CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/modules/*/include)
+foreach(INC_DIR ${MODULE_INCLUDE_DIRS})
+    if(IS_DIRECTORY "${INC_DIR}")
+        target_include_directories(PickleEngine INTERFACE "${INC_DIR}")
     endif()
 endforeach()
 
-include_directories(
-    ${SDL3_DIR}/include
-    ${CMAKE_SOURCE_DIR}/core  # Ajout explicite de core ici
-)
-
-message(STATUS "Core directory: ${CMAKE_SOURCE_DIR}/core")
-
-link_directories(${SDL3_DIR}/lib)
-
-# Créer la cible "PickleEngine" en tant que bibliothèque INTERFACE
-add_library(PickleEngine INTERFACE)
-
-# Définir les répertoires d'inclusion pour "PickleEngine"
-target_include_directories(PickleEngine INTERFACE
-    ${CMAKE_SOURCE_DIR}/core  # Ajout explicite de core
-    ${CMAKE_SOURCE_DIR}/modules
-    ${SDL3_DIR}/include
-)
-
-# Ajouter les sous-répertoires des modules
+# 📁 Ajouter les sous-dossiers des modules
 add_subdirectory(modules)
 
-# Déclaration de la cible principale (engine_launcher)
-add_executable(engine_launcher
-    engine_launcher/main.cpp
-)
+# 🚀 Exécutable principal
+add_executable(engine_launcher engine_launcher/main.cpp)
 
-# Lier SDL3 et les librairies de base avec engine_launcher
+# 🔗 Lier les dépendances
+
 target_link_libraries(engine_launcher
     PRIVATE
-        ${SDL3_DIR}/lib/libSDL3.a
         pthread
         dl
         m
+        PickleEngine
 )
-
-# Lier automatiquement PickleEngine avec engine_launcher
-target_link_libraries(engine_launcher PRIVATE PickleEngine)
