@@ -1,3 +1,9 @@
+git clone  https://github.com/libsdl-org/SDL_image.git SDL3_image
+cd SDL3_image
+
+mkdir build
+cd build
+
 cmake .. \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=../install \
@@ -19,7 +25,7 @@ cmake .. \
   -DSDLIMAGE_WEBP=OFF \
   -DSDLIMAGE_PNG_SHARED=OFF \
   -DSDLIMAGE_JPG_SHARED=OFF \
-  -DSDL3_DIR=../../SDL3/install/lib/cmake/SDL3
+  -DSDL3_DIR=../../SDL3/lib/cmake/SDL3
 
 make clean
 make -j$(nproc)
