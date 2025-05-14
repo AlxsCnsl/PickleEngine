@@ -32,4 +32,9 @@
 
 #build
 /build/
+/build-linux/
+/build-win/
 config.json
+
+#code ditor
+/.vscode/
