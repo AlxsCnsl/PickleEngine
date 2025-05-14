@@ -1,6 +1,6 @@
 {
     "name" : "window_render",
-    "description" : " Easy initializer for window and render for SDL3.",
+    "description" : " Simplifies the initialization of windows and rendering for SDL3.",
     "dependencies" : {
         "libs" : ["SDL3"],
         "modules" : []  

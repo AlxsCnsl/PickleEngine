@@ -57,7 +57,6 @@ add_executable(engine_launcher engine_launcher/main.cpp)
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     target_link_libraries(engine_launcher PRIVATE PickleEngine)
-    message("WHIOGUUUIUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYy")
 else()
     target_link_libraries(engine_launcher
         PRIVATE
@@ -66,7 +65,6 @@ else()
             m
             PickleEngine
     )
-    message("WHIOGUUUIUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYy")
 endif()
 
 

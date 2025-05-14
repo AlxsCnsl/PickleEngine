@@ -1,9 +1,0 @@
-{
-    "name" : "app_loop_sdl3",
-    "description" : "This is à module : app_loop_sdl3",
-    "dependences" : {
-        "libs" : ["SDL3"],
-        "modules" : ["window_render"]  
-    },
-    "fonctions" :[]
-}

@@ -1,5 +1,5 @@
-add_library(app_loop_sdl3
-    src/app_loop_sdl3.cpp
+add_library(app_loop
+    src/app_loop.cpp
 )
 
 execute_process(
@@ -20,16 +20,16 @@ execute_process(
 )
 
 # Target public and private includes
-target_include_directories(app_loop_sdl3
+target_include_directories(app_loop
     PUBLIC include
     PRIVATE ${CMAKE_SOURCE_DIR}/core
 )
 
-# Link SDL3 to app_loop_sdl3
-target_link_libraries(app_loop_sdl3 PUBLIC ${libs_output} ${modules_output})
+# Link SDL3 to app_loop
+target_link_libraries(app_loop PUBLIC ${libs_output} ${modules_output})
 
-# Ensure that PickleEngine uses app_loop_sdl3 if present
+# Ensure that PickleEngine uses app_loop if present
 if(TARGET PickleEngine)
-    target_link_libraries(PickleEngine INTERFACE app_loop_sdl3)
+    target_link_libraries(PickleEngine INTERFACE app_loop)
 endif()
 

@@ -2,6 +2,9 @@
 
 **PickleEngine** is a modular C++ game engine based on SDL3. Its goal is to provide a simple, extensible, and eventually cross-platform architecture for quickly creating games (2D for now).
 
+[Link to SDL ](https://github.com/libsdl-org/SDL)
+[Link to SDL_image](https://github.com/libsdl-org/SDL_image)
+
 ---
 
 ## ✨ Features
@@ -12,10 +15,10 @@
 
 ## 📦 Included Modules
 
-| Module Name         | Description                               |
-|---------------------|-------------------------------------------|
-| `window_render`     | Simplified classes for SDL3 windows       |
-| `app_loop_sdl3`     | Simplified loops for your app             |
+| Module Name         | Description                               | Documentation              |
+|---------------------|-------------------------------------------|----------------------------|
+| `window_render`     | Simplified classes for SDL3 windows       |[window_render docs](https://github.com/AlxsCnsl/PickleEngine/modules/window_render/README.md)|
+| `app_loop`          | Simplified loops for your app             |[app_loop docs](https://github.com/AlxsCnsl/PickleEngine/modules/app_loop_sdl3/README.md)|
 ---
 
 ## 🔧 Building
@@ -24,6 +27,7 @@
 
 - CMake (>= 3.20)
 - A C++20-compatible compiler
+- ninja [install hear]()
 
 ### Instructions
 
@@ -41,7 +45,13 @@ A 'conf.json' file is provided for some modules or for your own configuration.
 
 ### Build
 ```
-./scripts/build.sh
+#linux 
+./scripts/build_linux.sh 
+./scripts/build_linux_release.sh #for_publishing
+
+#macos
+
+#windows
 ```
 ### Run
 ```

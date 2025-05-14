@@ -8,10 +8,10 @@
 #include <window_render/window_render.hpp>
 
 
-class AppLoopSdl3{
+class AppLoop{
 public:
-    AppLoopSdl3(WindowRender win);
-    ~AppLoopSdl3();
+    AppLoop(WindowRender win);
+    ~AppLoop();
 
     using Callback = std::function<void(float)>;
 

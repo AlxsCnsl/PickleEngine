@@ -1,16 +1,16 @@
-#include <app_loop_sdl3/app_loop_sdl3.hpp>
+#include <app_loop/app_loop.hpp>
 #include <iostream>
 
-AppLoopSdl3::AppLoopSdl3(WindowRender win)
+AppLoop::AppLoop(WindowRender win)
 :window(win) {
     // le WindowRender ne dois pas etre .init avant 
 }
 
-AppLoopSdl3::~AppLoopSdl3() {
+AppLoop::~AppLoop() {
     window.shutdown();
 }
 
-void AppLoopSdl3::run() {
+void AppLoop::run() {
 
     window.init();
     

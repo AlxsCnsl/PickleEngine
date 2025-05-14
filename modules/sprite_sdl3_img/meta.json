@@ -3,7 +3,7 @@
     "description" : "This is à module : sprite_sdl3_img",
     "dependences" : {
         "libs" : ["SDL3"],
-        "modules" : []  
+        "modules" : ["window_render"]  
     },
     "fonctions" :[]
 }
