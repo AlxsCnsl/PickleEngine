@@ -17,8 +17,8 @@
 
 | Module Name         | Description                               | Documentation              |
 |---------------------|-------------------------------------------|----------------------------|
-| `window_render`     | Simplified classes for SDL3 windows       |[window_render docs](https://github.com/AlxsCnsl/PickleEngine/modules/window_render/README.md)|
-| `app_loop`          | Simplified loops for your app             |[app_loop docs](https://github.com/AlxsCnsl/PickleEngine/modules/app_loop_sdl3/README.md)|
+| `window_render`     | Simplified classes for SDL3 windows       |[window_render docs](https://github.com/AlxsCnsl/PickleEngine/blob/main/modules/window_render/README.md)|
+| `app_loop`          | Simplified loops for your app             |[app_loop docs](https://github.com/AlxsCnsl/PickleEngine/blob/main/modules/app_loop/README.md)|
 ---
 
 ## 🔧 Building
