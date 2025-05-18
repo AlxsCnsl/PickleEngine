@@ -27,7 +27,7 @@
 
 - CMake (>= 3.20)
 - A C++20-compatible compiler
-- ninja [install hear]()
+- ninja : Installation docs [here](https://github.com/ninja-build/ninja)
 
 ### Instructions
 

@@ -1,11 +1,17 @@
 #include <window_render/window_render.hpp>
 
 WindowRender::WindowRender(const std::string& title, int width, int height)
-:title(title), width(width), height(height) {}
+:title(title), width(width), height(height), clear_rgb() {}
+
+WindowRender::WindowRender(const std::string& title, int width, int height, int rgb[4])
+:title(title), width(width), height(height), clear_rgb(rgb[0] ,rgb[1], rgb[2], rgb[3]) {}
+
 
 WindowRender::~WindowRender() {
     shutdown();
 }
+
+
 
 bool WindowRender::init() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -28,14 +34,30 @@ bool WindowRender::init() {
     return true;
 }
 
+
 void WindowRender::render() {
-    SDL_SetRenderDrawColor(renderer, 20, 20, 20, 255);
+    std::cout << "Rendering frame..." << std::endl;
+    SDL_SetRenderDrawColor(renderer, clear_rgb.red, clear_rgb.green, clear_rgb.blue, 255);
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
 }
+
 
 void WindowRender::shutdown() {
     if (renderer) SDL_DestroyRenderer(renderer);
     if (window) SDL_DestroyWindow(window);
     SDL_Quit();
+}
+
+
+void  WindowRender::setClearRGB(int r, int g, int b){
+    clear_rgb.red = r;
+    clear_rgb.green = g;
+    clear_rgb.blue = b;
+}
+
+
+void  WindowRender::setClearRGBA(int r, int g, int b, int a){
+    setClearRGB(r, g, b);
+    clear_rgb.aplpha = a;
 }

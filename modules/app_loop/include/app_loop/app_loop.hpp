@@ -10,7 +10,7 @@
 
 class AppLoop{
 public:
-    AppLoop(WindowRender win);
+    AppLoop(WindowRender* win);
     ~AppLoop();
 
     using Callback = std::function<void(float)>;
@@ -20,7 +20,9 @@ public:
     void setOnRender(Callback cb)     { onRender = cb; }
     void setOnShutdown(Callback cb)   { onShutdown = cb; }
 
-    void run(); // Ne retourne que quand le jeu est terminé
+    void run(); // Only returns when the game is finished
+
+    WindowRender* getWindow() const {return window;}
 
 private:
     Callback onInit     = nullptr;
@@ -30,5 +32,5 @@ private:
 
     bool isRunning = true;
 
-    WindowRender window;
+    WindowRender* window;
 };

@@ -1,18 +1,18 @@
 #include <app_loop/app_loop.hpp>
 #include <iostream>
 
-AppLoop::AppLoop(WindowRender win)
+AppLoop::AppLoop(WindowRender* win)
 :window(win) {
     // le WindowRender ne dois pas etre .init avant 
 }
 
 AppLoop::~AppLoop() {
-    window.shutdown();
+    window->shutdown();
 }
 
 void AppLoop::run() {
 
-    window.init();
+    window->init();
     
     if (onInit) onInit(0.0f);
 
@@ -34,7 +34,7 @@ void AppLoop::run() {
         if (onUpdate) onUpdate(deltaTime);
         if (onRender) onRender(deltaTime);
 
-        window.render();
+        window->render();
 
         SDL_Delay(16); // limite à ~60 FPS, à ajuster avec VSync ou frame cap plus intelligent
     }
