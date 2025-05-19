@@ -2,6 +2,7 @@
 #include <window_render/window_render.hpp>
 #include <app_loop/app_loop.hpp>
 #include<easy_drawing/easy_drawing.hpp>
+#include<rgb_pallet/rgb_pallet.hpp>
 
 int main (){
     WindowRender* window = new WindowRender("ExampleWindow", 600, 600);
@@ -41,7 +42,8 @@ int main (){
         VLine(window, 100, 100, 200, {0, 0, 255, 255});
         DrawRect(window, 300, 200, 100, 50, {0, 0, 0, 255});
         FillRect(window, 100, 300, 150, 80, {255, 0, 255, 255});
-        DrawCircle(window, 500, 350, 40, {0, 128, 128, 255});
+        DrawCircle(window, 500, 350, 40, PKRGB::BLUE);
+        DrawCircle(window, 480, 320, 45, PKRGB::PINK);
     });
 
     app.setOnShutdown({
