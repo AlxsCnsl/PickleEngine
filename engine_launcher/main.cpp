@@ -9,7 +9,7 @@ int main (){
     AppLoop app = AppLoop(window);
 
     app.setOnInit([&app](float deltatime){
-        app.getWindow()->setClearRGB(255, 0, 0);
+        app.getWindow()->setClearRGBA(PKRGB::L_GRAY);
     });
 
     app.setOnUpdate([&app](float deltatime){
@@ -17,31 +17,13 @@ int main (){
     });
 
     app.setOnRender([&app](float deltatime){
-        WindowRender::ClearRGB rgb = app.getWindow()->getClearRGB();
-        int factor = 5;
-        for(int i = 0; i< factor; i++){
-            if (rgb.red == 255 && rgb.green < 255 && rgb.blue == 0) {  // Rouge → Jaune
-                    rgb.green++;
-                } else if (rgb.red > 0 && rgb.green == 255 && rgb.blue == 0) {  // Jaune → Vert
-                    rgb.red--;
-                } else if (rgb.red == 0 && rgb.green == 255 && rgb.blue < 255) {  // Vert → Cyan
-                    rgb.blue++;
-                } else if (rgb.red == 0 && rgb.green > 0 && rgb.blue == 255) {  // Cyan → Bleu
-                    rgb.green--;
-                } else if (rgb.red < 255 && rgb.green == 0 && rgb.blue == 255) {  // Bleu → Magenta
-                    rgb.red++;
-                } else if (rgb.red == 255 && rgb.green == 0 && rgb.blue > 0) {  // Magenta → Rouge
-                    rgb.blue--;
-                }
-        }
-        app.getWindow()->setClearRGB(rgb.red, rgb.green, rgb.blue);
-        
-        WindowRender* window = app.getWindow();
+  
+       WindowRender* window = app.getWindow();
         PutPixel(window, 320, 240, {255, 0, 0, 255});
         HLine(window, 100, 100, 200, {0, 255, 0, 255});
         VLine(window, 100, 100, 200, {0, 0, 255, 255});
         DrawRect(window, 300, 200, 100, 50, {0, 0, 0, 255});
-        FillRect(window, 100, 300, 150, 80, {255, 0, 255, 255});
+        FillRect(window, 100, 300, 150, 80, PKRGB::RED);
         DrawCircle(window, 500, 350, 40, PKRGB::BLUE);
         DrawCircle(window, 480, 320, 45, PKRGB::PINK);
     });

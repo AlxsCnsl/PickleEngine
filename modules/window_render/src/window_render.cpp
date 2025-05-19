@@ -3,7 +3,7 @@
 WindowRender::WindowRender(const std::string& title, int width, int height)
 :title(title), width(width), height(height), clear_rgb() {}
 
-WindowRender::WindowRender(const std::string& title, int width, int height, int rgb[4])
+WindowRender::WindowRender(const std::string& title, int width, int height, Uint8 rgb[4])
 :title(title), width(width), height(height), clear_rgb(rgb[0] ,rgb[1], rgb[2], rgb[3]) {}
 
 
@@ -53,14 +53,21 @@ void WindowRender::shutdown() {
 }
 
 
-void  WindowRender::setClearRGB(int r, int g, int b){
+void WindowRender::setClearRGB(Uint8 r, Uint8 g, Uint8 b){
     clear_rgb.red = r;
     clear_rgb.green = g;
     clear_rgb.blue = b;
 }
 
 
-void  WindowRender::setClearRGBA(int r, int g, int b, int a){
+void WindowRender::setClearRGBA(Uint8 r, Uint8 g, Uint8 b, Uint8 a){
     setClearRGB(r, g, b);
     clear_rgb.aplpha = a;
+}
+
+void WindowRender::setClearRGBA(SDL_Color rgb){
+    clear_rgb.red = rgb.r;
+    clear_rgb.green = rgb.g;
+    clear_rgb.blue = rgb.b;
+    clear_rgb.aplpha = rgb.a;
 }
