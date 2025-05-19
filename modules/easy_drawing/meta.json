@@ -1,6 +1,6 @@
 {
-    "name" : "sprite_sdl3_img",
-    "description" : "This is à module : sprite_sdl3_img",
+    "name" : "easy_drawing",
+    "description" : "This is à module : easy_drawing",
     "dependences" : {
         "libs" : ["SDL3"],
         "modules" : ["window_render"]  

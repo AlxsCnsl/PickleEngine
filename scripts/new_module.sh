@@ -111,9 +111,9 @@ dep...
 ## Functions
 fun...
 ## EXAMPLE : 
-```cpp
+\`\`\`cpp
 #include <iostream>
-```
+\`\`\`
 # Motes
 notes...
 EOF

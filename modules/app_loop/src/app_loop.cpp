@@ -31,10 +31,11 @@ void AppLoop::run() {
         float deltaTime = std::chrono::duration<float>(currentTime - lastTime).count();
         lastTime = currentTime;
 
+        
         if (onUpdate) onUpdate(deltaTime);
+        window ->renderClear();
         if (onRender) onRender(deltaTime);
-
-        window->render();
+        window->renderPresent();
 
         SDL_Delay(16); // limite à ~60 FPS, à ajuster avec VSync ou frame cap plus intelligent
     }

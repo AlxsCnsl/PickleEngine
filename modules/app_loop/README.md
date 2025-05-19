@@ -48,7 +48,11 @@ int main (){
         app.getWindow()->setClearRGB(255, 0, 0);
     });
 
-    app.setOnUpdate([&app](float deltatime) {
+    app.setOnUpdate({
+        // Updating logic
+    });
+
+    app.setOnRender([&app](float deltatime) {
         WindowRender::ClearRGB rgb = app.getWindow()->getClearRGB();
         int factor = 5;
         for (int i = 0; i < factor; i++) {
@@ -67,10 +71,6 @@ int main (){
             }
         }
         app.getWindow()->setClearRGB(rgb.red, rgb.green, rgb.blue);
-    });
-
-    app.setOnRender({
-        // rendering logic
     });
 
     app.setOnShutdown({

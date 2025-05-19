@@ -35,10 +35,13 @@ bool WindowRender::init() {
 }
 
 
-void WindowRender::render() {
+void WindowRender::renderClear() {
     std::cout << "Rendering frame..." << std::endl;
     SDL_SetRenderDrawColor(renderer, clear_rgb.red, clear_rgb.green, clear_rgb.blue, 255);
     SDL_RenderClear(renderer);
+}
+
+void WindowRender::renderPresent(){
     SDL_RenderPresent(renderer);
 }
 

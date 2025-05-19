@@ -1,9 +1,10 @@
 
 #include <window_render/window_render.hpp>
 #include <app_loop/app_loop.hpp>
+#include<easy_drawing/easy_drawing.hpp>
 
 int main (){
-    WindowRender* window = new WindowRender("ExampleWindow", 500, 5000);
+    WindowRender* window = new WindowRender("ExampleWindow", 600, 600);
     AppLoop app = AppLoop(window);
 
     app.setOnInit([&app](float deltatime){
@@ -11,6 +12,10 @@ int main (){
     });
 
     app.setOnUpdate([&app](float deltatime){
+
+    });
+
+    app.setOnRender([&app](float deltatime){
         WindowRender::ClearRGB rgb = app.getWindow()->getClearRGB();
         int factor = 5;
         for(int i = 0; i< factor; i++){
@@ -29,10 +34,14 @@ int main (){
                 }
         }
         app.getWindow()->setClearRGB(rgb.red, rgb.green, rgb.blue);
-    });
-
-    app.setOnRender({
-        //logique de rendue 
+        
+        WindowRender* window = app.getWindow();
+        PutPixel(window, 320, 240, {255, 0, 0, 255});
+        HLine(window, 100, 100, 200, {0, 255, 0, 255});
+        VLine(window, 100, 100, 200, {0, 0, 255, 255});
+        DrawRect(window, 300, 200, 100, 50, {0, 0, 0, 255});
+        FillRect(window, 100, 300, 150, 80, {255, 0, 255, 255});
+        DrawCircle(window, 500, 350, 40, {0, 128, 128, 255});
     });
 
     app.setOnShutdown({

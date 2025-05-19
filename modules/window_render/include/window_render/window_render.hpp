@@ -25,7 +25,8 @@ public:
     ~WindowRender();
 
     bool init();
-    void render();
+    void renderClear();
+    void renderPresent();
     void shutdown();
 
     SDL_Window* getWindow() const { return window; }

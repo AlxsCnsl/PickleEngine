@@ -22,8 +22,10 @@ WindowRender window_variable = WindowRender(const std::string& title, int width,
 // Initializes the SDL window and renderer with a title, width, and height-----------
 window_variable.init(); // return void
 
-// Applies the renderer (displays the current frame on screen)-----------------------
-window_variable.render(); // return void
+// Cleat the renderer ---------------------------------------------------------------
+window_variable.renderClear(); // return void
+// Applies the renderer -------------------------------------------------------------
+window_varilabe.renderPresent(); // return void
 
 // Properly destroys the window and renderer-----------------------------------------
 window_variable.shutdown(); // return void
@@ -72,8 +74,9 @@ window_variable.getClearRGB() //return ClearRGB
                 isRunning = false;
             }
         }
-
-        window.render();
+        window.renderClear();
+        //Drawing
+        window.renderPresent();
 
         SDL_Delay(16);
     }

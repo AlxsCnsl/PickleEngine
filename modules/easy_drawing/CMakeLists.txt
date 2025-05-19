@@ -1,5 +1,5 @@
-add_library(sprite_sdl3_img
-    src/sprite_sdl3_img.cpp
+add_library(easy_drawing
+    src/easy_drawing.cpp
 )
 
 execute_process(
@@ -20,16 +20,16 @@ execute_process(
 )
 
 # Target public and private includes
-target_include_directories(sprite_sdl3_img
+target_include_directories(easy_drawing
     PUBLIC include
     PRIVATE ${CMAKE_SOURCE_DIR}/core
 )
 
-# Link SDL3 to sprite_sdl3_img
-target_link_libraries(sprite_sdl3_img PUBLIC SDL3 SDL3_image ${modules_output})
+# Link SDL3 to easy_drawing
+target_link_libraries(easy_drawing PUBLIC ${libs_output} ${modules_output})
 
-# Ensure that PickleEngine uses sprite_sdl3_img if present
+# Ensure that PickleEngine uses easy_drawing if present
 if(TARGET PickleEngine)
-    target_link_libraries(PickleEngine INTERFACE sprite_sdl3_img)
+    target_link_libraries(PickleEngine INTERFACE easy_drawing)
 endif()
 
