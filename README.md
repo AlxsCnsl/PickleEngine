@@ -19,6 +19,7 @@
 |---------------------|-------------------------------------------|----------------------------|
 | `window_render`     | Simplified classes for SDL3 windows       |[window_render docs](https://github.com/AlxsCnsl/PickleEngine/blob/main/modules/window_render/README.md)|
 | `app_loop`          | Simplified loops for your app             |[app_loop docs](https://github.com/AlxsCnsl/PickleEngine/blob/main/modules/app_loop/README.md)|
+|`easy_drawing`|Simplified functions for draw primitives|[easy_drawing](https://github.com/AlxsCnsl/PickleEngine/blob/main/modules/easy_drawing/README.md)|
 ---
 
 ## 🔧 Building
