@@ -48,33 +48,33 @@ int main (){
         app.getWindow()->setClearRGB(255, 0, 0);
     });
 
-    app.setOnUpdate([&app](float deltatime){
+    app.setOnUpdate({
+        // Updating logic
+    });
+
+    app.setOnRender([&app](float deltatime) {
         WindowRender::ClearRGB rgb = app.getWindow()->getClearRGB();
         int factor = 5;
-        for(int i = 0; i< factor; i++){
-            if (rgb.red == 255 && rgb.green < 255 && rgb.blue == 0) {  // Rouge → Jaune
-                    rgb.green++;
-                } else if (rgb.red > 0 && rgb.green == 255 && rgb.blue == 0) {  // Jaune → Vert
-                    rgb.red--;
-                } else if (rgb.red == 0 && rgb.green == 255 && rgb.blue < 255) {  // Vert → Cyan
-                    rgb.blue++;
-                } else if (rgb.red == 0 && rgb.green > 0 && rgb.blue == 255) {  // Cyan → Bleu
-                    rgb.green--;
-                } else if (rgb.red < 255 && rgb.green == 0 && rgb.blue == 255) {  // Bleu → Magenta
-                    rgb.red++;
-                } else if (rgb.red == 255 && rgb.green == 0 && rgb.blue > 0) {  // Magenta → Rouge
-                    rgb.blue--;
-                }
+        for (int i = 0; i < factor; i++) {
+            if (rgb.red == 255 && rgb.green < 255 && rgb.blue == 0) {  // Red → Yellow
+                rgb.green++;
+            } else if (rgb.red > 0 && rgb.green == 255 && rgb.blue == 0) {  // Yellow → Green
+                rgb.red--;
+            } else if (rgb.red == 0 && rgb.green == 255 && rgb.blue < 255) {  // Green → Cyan
+                rgb.blue++;
+            } else if (rgb.red == 0 && rgb.green > 0 && rgb.blue == 255) {  // Cyan → Blue
+                rgb.green--;
+            } else if (rgb.red < 255 && rgb.green == 0 && rgb.blue == 255) {  // Blue → Magenta
+                rgb.red++;
+            } else if (rgb.red == 255 && rgb.green == 0 && rgb.blue > 0) {  // Magenta → Red
+                rgb.blue--;
+            }
         }
         app.getWindow()->setClearRGB(rgb.red, rgb.green, rgb.blue);
     });
 
-    app.setOnRender({
-        //logique de rendue 
-    });
-
     app.setOnShutdown({
-        //logique de de fermeture de l'app
+        // app shutdown logic
     });
 
     app.run();
@@ -82,10 +82,9 @@ int main (){
 
     return 0;
 }
-
  ```
 
- ## Notes
+## Notes
 
 Callbacks receive a float representing the time (in seconds) since the last frame — useful for time-based updates.
 

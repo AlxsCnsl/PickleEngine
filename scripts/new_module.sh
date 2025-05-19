@@ -102,4 +102,20 @@ cat > "$MODULE_DIR/meta.json" <<EOF
 }
 EOF
 
+#Crée le README.md
+cat >"$MODULE_DIR/README.md" <<EOF
+# $MODULE_NAME
+desc...
+## Dependencies 
+dep...
+## Functions
+fun...
+## EXAMPLE : 
+\`\`\`cpp
+#include <iostream>
+\`\`\`
+# Motes
+notes...
+EOF
+
 echo " Module '$MODULE_NAME' créé avec succès."

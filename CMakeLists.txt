@@ -53,8 +53,6 @@ add_subdirectory(modules)
 add_executable(engine_launcher engine_launcher/main.cpp)
 
 # 🔗 Lier les dépendances
-
-
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     target_link_libraries(engine_launcher PRIVATE PickleEngine)
 else()
