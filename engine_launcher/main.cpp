@@ -3,9 +3,11 @@
 #include <app_loop/app_loop.hpp>
 #include<easy_drawing/easy_drawing.hpp>
 #include<rgb_pallet/rgb_pallet.hpp>
+#include<SDL3_image/SDL_image.h>
+#include<SDL3/SDL.h>
 
 int main (){
-    WindowRender* window = new WindowRender("ExampleWindow", 600, 600);
+    WindowRender* window = new WindowRender("ExampleWindow", 500, 500);
     AppLoop app = AppLoop(window);
 
     app.setOnInit([&app](float deltatime){
@@ -17,15 +19,18 @@ int main (){
     });
 
     app.setOnRender([&app](float deltatime){
-  
-       WindowRender* window = app.getWindow();
-        PutPixel(window, 320, 240, {255, 0, 0, 255});
-        HLine(window, 100, 100, 200, {0, 255, 0, 255});
-        VLine(window, 100, 100, 200, {0, 0, 255, 255});
-        DrawRect(window, 300, 200, 100, 50, {0, 0, 0, 255});
-        FillRect(window, 100, 300, 150, 80, PKRGB::RED);
-        DrawCircle(window, 500, 350, 40, PKRGB::BLUE);
-        DrawCircle(window, 480, 320, 45, PKRGB::PINK);
+
+        const char* basePath = SDL_GetBasePath();
+        std::string assetPath = std::string(basePath) + "assets/pickle.png";
+
+        WindowRender* window = app.getWindow();
+        SDL_Texture* texture = IMG_LoadTexture(window->getRenderer(), assetPath.c_str());
+        if(!texture){std::cout << "Erreur SDL_image : " << SDL_GetError() << std::endl;}
+        SDL_SetTextureScaleMode(texture, SDL_ScaleMode::SDL_SCALEMODE_PIXELART);
+        SDL_FRect rect;
+        rect.x = 0;rect.y = 0;rect.h = 100.0; rect.w = 100.0;
+        SDL_RenderTexture(window->getRenderer(), texture, nullptr, &rect);
+        
     });
 
     app.setOnShutdown({

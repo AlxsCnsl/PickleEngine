@@ -7,6 +7,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+# 🚀 Exécutable principal
+add_executable(engine_launcher engine_launcher/main.cpp)
+
+add_custom_command(
+    TARGET engine_launcher POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/assets
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_SOURCE_DIR}/assets
+            ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/assets
+)
 
 # 📁 Répertoires de libs locales
 set(SDL3_DIR "${CMAKE_SOURCE_DIR}/libs/SDL3")
@@ -49,8 +59,6 @@ endforeach()
 # 📁 Ajouter les sous-dossiers des modules
 add_subdirectory(modules)
 
-# 🚀 Exécutable principal
-add_executable(engine_launcher engine_launcher/main.cpp)
 
 # 🔗 Lier les dépendances
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
