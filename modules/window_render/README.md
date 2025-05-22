@@ -13,6 +13,7 @@ SDL3 (static lib)
 WindowRender window_variable = WindowRender(const std::string& title, int width, int height); //clear color = black
 
 WindowRender window_variable = WindowRender(const std::string& title, int width, int height, Uint8 rgb[4]);
+
 /* rgb[0] = red   (0 to 255)
 ** rgb[1] = green (0 to 255)
 ** rgb[2] = blue  (0 to 255)
