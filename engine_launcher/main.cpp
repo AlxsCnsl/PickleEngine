@@ -8,32 +8,46 @@
 #include<SDL3_image/SDL_image.h>
 #include<SDL3/SDL.h>
 
+#include<entt/entt.hpp>
+
+
+// mes structe
+
+
+struct Position {
+    float x, y;
+};
+
+struct Velocity {
+    float dx, dy;
+};
+
 int main (){
     WindowRender* window = new WindowRender("ExampleWindow", 500, 500);
     AppLoop* app = new AppLoop(window);
+    entt::registry registry;//le registry
 
-    app->setOnInit([app](float deltatime){
+    auto entity = registry.create();
+
+    app->setOnInit([&](float deltatime){//----------------INIT_________________
+
         app->getWindow()->setClearRGBA(PKRGB::L_GRAY);
-    });
-
-    app->setOnUpdate([app](float deltatime){
-
-    });
-
+        //test palyer
+        registry.emplace<Position>(entity, 0.0f, 0.0f);
+        registry.emplace<Velocity>(entity, 30.0f, 30.0f);
     
-    app->setOnRender([app](float deltatime){
-        WindowRender* win = app->getWindow();
-
-        Sprite* psyduck = new Sprite(win, "assets/psyduck.png", SDL_SCALEMODE_PIXELART);
-
-        psyduck->draw_sprite(win,{0, 0, 100, 100});
-        psyduck->draw_sprite(win,{100, 0, 100, 100});
-        psyduck->draw_sprite(win,{0, 100, 100, 100});
-        psyduck->draw_sprite(win,{100, 100, 100, 100});
-
     });
 
-    app->setOnShutdown({
+    app->setOnUpdate([&](float deltatime){//--------------UPDATE_________________
+    });
+    
+    app->setOnRender([&](float deltatime){//--------------RENDER__________________
+        WindowRender* win = app->getWindow();
+        Sprite sp1 = Sprite(win, "assets/psyduck.png", SDL_SCALEMODE_PIXELART);
+        sp1.draw_sprite(win, {0,0, 100, 100});
+    });
+
+    app->setOnShutdown({//_________________________ShutDown
         //logique de de fermeture de l'app
     });
 
