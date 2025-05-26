@@ -1,54 +1,57 @@
 
 #include <window_render/window_render.hpp>
 #include <app_loop/app_loop.hpp>
-#include<easy_drawing/easy_drawing.hpp>
+#include <easy_drawing/easy_drawing.hpp>
+#include <rgb_pallet/rgb_pallet.hpp>
+#include <sprite_class/sprite_class.hpp>
+
+#include<SDL3_image/SDL_image.h>
+#include<SDL3/SDL.h>
+
+#include<entt/entt.hpp>
+
+
+// mes structe
+
+
+struct Position {
+    float x, y;
+};
+
+struct Velocity {
+    float dx, dy;
+};
 
 int main (){
-    WindowRender* window = new WindowRender("ExampleWindow", 600, 600);
-    AppLoop app = AppLoop(window);
+    WindowRender* window = new WindowRender("ExampleWindow", 500, 500);
+    AppLoop* app = new AppLoop(window);
+    entt::registry registry;//le registry
 
-    app.setOnInit([&app](float deltatime){
-        app.getWindow()->setClearRGB(255, 0, 0);
+    auto entity = registry.create();
+
+    app->setOnInit([&](float deltatime){//----------------INIT_________________
+
+        app->getWindow()->setClearRGBA(PKRGB::L_GRAY);
+        //test palyer
+        registry.emplace<Position>(entity, 0.0f, 0.0f);
+        registry.emplace<Velocity>(entity, 30.0f, 30.0f);
+    
     });
 
-    app.setOnUpdate([&app](float deltatime){
-
+    app->setOnUpdate([&](float deltatime){//--------------UPDATE_________________
+    });
+    
+    app->setOnRender([&](float deltatime){//--------------RENDER__________________
+        WindowRender* win = app->getWindow();
+        Sprite sp1 = Sprite(win, "assets/psyduck.png", SDL_SCALEMODE_PIXELART);
+        sp1.draw_sprite(win, {0,0, 100, 100});
     });
 
-    app.setOnRender([&app](float deltatime){
-        WindowRender::ClearRGB rgb = app.getWindow()->getClearRGB();
-        int factor = 5;
-        for(int i = 0; i< factor; i++){
-            if (rgb.red == 255 && rgb.green < 255 && rgb.blue == 0) {  // Rouge → Jaune
-                    rgb.green++;
-                } else if (rgb.red > 0 && rgb.green == 255 && rgb.blue == 0) {  // Jaune → Vert
-                    rgb.red--;
-                } else if (rgb.red == 0 && rgb.green == 255 && rgb.blue < 255) {  // Vert → Cyan
-                    rgb.blue++;
-                } else if (rgb.red == 0 && rgb.green > 0 && rgb.blue == 255) {  // Cyan → Bleu
-                    rgb.green--;
-                } else if (rgb.red < 255 && rgb.green == 0 && rgb.blue == 255) {  // Bleu → Magenta
-                    rgb.red++;
-                } else if (rgb.red == 255 && rgb.green == 0 && rgb.blue > 0) {  // Magenta → Rouge
-                    rgb.blue--;
-                }
-        }
-        app.getWindow()->setClearRGB(rgb.red, rgb.green, rgb.blue);
-        
-        WindowRender* window = app.getWindow();
-        PutPixel(window, 320, 240, {255, 0, 0, 255});
-        HLine(window, 100, 100, 200, {0, 255, 0, 255});
-        VLine(window, 100, 100, 200, {0, 0, 255, 255});
-        DrawRect(window, 300, 200, 100, 50, {0, 0, 0, 255});
-        FillRect(window, 100, 300, 150, 80, {255, 0, 255, 255});
-        DrawCircle(window, 500, 350, 40, {0, 128, 128, 255});
-    });
-
-    app.setOnShutdown({
+    app->setOnShutdown({//_________________________ShutDown
         //logique de de fermeture de l'app
     });
 
-    app.run();
+    app->run();
 
 
     return 0;

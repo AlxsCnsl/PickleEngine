@@ -1,0 +1,9 @@
+{
+    "name" : "ecs_base_tools",
+    "description" : "This is à module : ecs_base_tools",
+    "dependences" : {
+        "libs" : ["SDL3", "entt"],
+        "modules" : []  
+    },
+    "fonctions" :[]
+}

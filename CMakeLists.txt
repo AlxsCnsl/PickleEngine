@@ -1,69 +1,52 @@
-cmake_minimum_required(VERSION 3.16)
-project(GameEngine LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.21)
+project(PickleEngine VERSION 0.1.0 LANGUAGES CXX)
 
-# 🧱 Options générales
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(BUILD_SHARED_LIBS OFF)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+# 🎯 Dépendances externes
+add_subdirectory(libs/SDL3)
+add_subdirectory(libs/SDL3_image)
 
-# 📁 Répertoires de libs locales
-set(SDL3_DIR "${CMAKE_SOURCE_DIR}/libs/SDL3")
-set(SDL3_IMGDIR "${CMAKE_SOURCE_DIR}/libs/SDL3_image")
+# 📚 entt (header-only)
+add_library(entt INTERFACE)
+target_include_directories(entt INTERFACE ${CMAKE_SOURCE_DIR}/libs/entt/include)
 
-# 📚 Bibliothèque statique SDL3
-add_library(SDL3 STATIC IMPORTED)
-set_target_properties(SDL3 PROPERTIES
-    IMPORTED_LOCATION "${SDL3_DIR}/lib/libSDL3.a"
-    INTERFACE_INCLUDE_DIRECTORIES "${SDL3_DIR}/include"
-)
-
-# 📚 Bibliothèque statique SDL3_image
-add_library(SDL3_image STATIC IMPORTED)
-set_target_properties(SDL3_image PROPERTIES
-    IMPORTED_LOCATION "${SDL3_IMGDIR}/lib/libSDL3_image.a"
-    INTERFACE_INCLUDE_DIRECTORIES "${SDL3_IMGDIR}/include"
-)
-
-
-# 🧩 Bibliothèque principale du moteur
+# 🧠 Bibliothèque principale de ton moteur
 add_library(PickleEngine INTERFACE)
 target_include_directories(PickleEngine INTERFACE
     ${CMAKE_SOURCE_DIR}/core
-    ${CMAKE_SOURCE_DIR}/modules
-    ${SDL3_DIR}/include
-    ${SDL3_IMGDIR}/include
+    ${CMAKE_SOURCE_DIR}/libs/SDL3/include
+    ${CMAKE_SOURCE_DIR}/libs/SDL3_image/include
+    ${CMAKE_SOURCE_DIR}/libs/entt/include
 )
-target_link_libraries(PickleEngine INTERFACE SDL3 SDL3_image)
 
+# 📁 Code de base (core)
+add_subdirectory(core)
 
-# 🔁 Inclure automatiquement les dossiers /modules/*/include
-file(GLOB_RECURSE MODULE_INCLUDE_DIRS CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/modules/*/include)
-foreach(INC_DIR ${MODULE_INCLUDE_DIRS})
-    if(IS_DIRECTORY "${INC_DIR}")
-        target_include_directories(PickleEngine INTERFACE "${INC_DIR}")
+# 🧩 Modules (automatisé)
+file(GLOB MODULE_CMAKELISTS RELATIVE ${CMAKE_SOURCE_DIR}/modules/ ${CMAKE_SOURCE_DIR}/modules/*/CMakeLists.txt)
+
+set(MODULE_NAMES "")
+foreach(module_cmakelists ${MODULE_CMAKELISTS})
+    get_filename_component(module_dir ${module_cmakelists} DIRECTORY)
+    message(STATUS "🔗 Ajout automatique du module : ${module_dir}")
+    add_subdirectory(modules/${module_dir})
+    list(APPEND MODULE_NAMES ${module_dir})
+endforeach()
+
+# 🔗 Link tous les modules à PickleEngine automatiquement
+foreach(module_name IN LISTS MODULE_NAMES)
+    if(TARGET ${module_name})
+        target_link_libraries(PickleEngine INTERFACE ${module_name})
+    else()
+        message(WARNING "⚠️ Le module ${module_name} n’a pas défini de target correspondante.")
     endif()
 endforeach()
 
-# 📁 Ajouter les sous-dossiers des modules
-add_subdirectory(modules)
 
-# 🚀 Exécutable principal
-add_executable(engine_launcher engine_launcher/main.cpp)
-
-# 🔗 Lier les dépendances
-if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-    target_link_libraries(engine_launcher PRIVATE PickleEngine)
-else()
-    target_link_libraries(engine_launcher
-        PRIVATE
-            pthread
-            dl
-            m
-            PickleEngine
-    )
-endif()
-
-
-
+# 🚀 Application de lancement
+add_subdirectory(engine_launcher)

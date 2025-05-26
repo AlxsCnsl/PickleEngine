@@ -12,7 +12,8 @@ SDL3 (static lib)
 // Create a WindowRender instance----------------------------------------------------
 WindowRender window_variable = WindowRender(const std::string& title, int width, int height); //clear color = black
 
-WindowRender window_variable = WindowRender(const std::string& title, int width, int height, int rgb[4]);
+WindowRender window_variable = WindowRender(const std::string& title, int width, int height, Uint8 rgb[4]);
+
 /* rgb[0] = red   (0 to 255)
 ** rgb[1] = green (0 to 255)
 ** rgb[2] = blue  (0 to 255)
@@ -37,8 +38,9 @@ window_variable.getWindow(); // return SDL_Window*
 window_variable.getRenderer(); // return SDL_Renderer*
 
 // Change the background color when clearing ----------------------------------------
-window_variable.setClearRGB(int r, int g, int b); // returns void
-window_variable.setClearRGBA(int r, int g, int b, int a); // returns void
+window_variable.setClearRGB(Uint8 r, Uint8 g, Uint8 b); // returns void
+window_variable.setClearRGBA(Uint8 r, Uint8 g, Uint8 b, Uint8 a); // returns void
+window_variable.setClearRGBA(SDL_Color rgb); // returns void
 /* r = red   (0 to 255)
 ** g = green (0 to 255)
 ** b = blue  (0 to 255)
@@ -49,10 +51,10 @@ window_variable.setClearRGBA(int r, int g, int b, int a); // returns void
 window_variable.getClearRGB() //return ClearRGB
 /*
 **  struct ClearRGB{
-**        int red;
-**        int green;
-**        int blue;
-**        int aplpha;
+**        Uint8 red;
+**        Uint8 green;
+**        Uint8 blue;
+**        Uint8 aplpha;
 **  }
 */
 

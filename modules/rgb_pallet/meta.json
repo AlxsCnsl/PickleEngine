@@ -1,0 +1,9 @@
+{
+    "name" : "rgb_pallet",
+    "description" : "This is à module : rgb_pallet",
+    "dependences" : {
+        "libs" : ["SDL3"],
+        "modules" : []  
+    },
+    "fonctions" :[]
+}
