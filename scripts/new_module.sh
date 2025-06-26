@@ -52,41 +52,17 @@ EOF
 
 # Crée le CMakeLists.txt
 cat > "$MODULE_DIR/CMakeLists.txt" <<EOF
-add_library($MODULE_NAME
+add_library($MODULE_NAME STATIC
     src/$MODULE_NAME.cpp
 )
 
-execute_process(
-    COMMAND bash \${CMAKE_SOURCE_DIR}/scripts/get_libs.sh \${CMAKE_CURRENT_SOURCE_DIR}
-    RESULT_VARIABLE result_libs
-    OUTPUT_VARIABLE libs_output
-    ERROR_VARIABLE libs_error
-    OUTPUT_STRIP_TRAILING_WHITESPACE
+target_include_directories($MODULE_NAME PUBLIC
+    \${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-# Run get_modules.sh and store the output in a variable
-execute_process(
-    COMMAND bash \${CMAKE_SOURCE_DIR}/scripts/get_modules.sh \${CMAKE_CURRENT_SOURCE_DIR}
-    RESULT_VARIABLE result_modules
-    OUTPUT_VARIABLE modules_output
-    ERROR_VARIABLE modules_error
-    OUTPUT_STRIP_TRAILING_WHITESPACE
+target_link_libraries($MODULE_NAME PUBLIC
+    #add dependence lib here
 )
-
-# Target public and private includes
-target_include_directories($MODULE_NAME
-    PUBLIC include
-    PRIVATE \${CMAKE_SOURCE_DIR}/core
-)
-
-# Link SDL3 to $MODULE_NAME
-target_link_libraries($MODULE_NAME PUBLIC \${libs_output} \${modules_output})
-
-# Ensure that PickleEngine uses $MODULE_NAME if present
-if(TARGET PickleEngine)
-    target_link_libraries(PickleEngine INTERFACE $MODULE_NAME)
-endif()
-
 EOF
 
 #Crée le meta.json

@@ -19,9 +19,14 @@ void AppLoop::run() {
     auto lastTime = std::chrono::high_resolution_clock::now();
 
     while (isRunning) {
-        // Gestion des événements SDL
+
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
+
+            if (onEvent) {
+                onEvent(event);
+            }
+            
             if (event.type == SDL_EVENT_QUIT) {
                 isRunning = false;
             }
@@ -37,7 +42,7 @@ void AppLoop::run() {
         if (onRender) onRender(deltaTime);
         window->renderPresent();
 
-        SDL_Delay(16); // limite à ~60 FPS, à ajuster avec VSync ou frame cap plus intelligent
+        SDL_Delay(16);
     }
 
     if (onShutdown) onShutdown(0.0f);

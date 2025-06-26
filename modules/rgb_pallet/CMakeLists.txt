@@ -10,5 +10,3 @@ target_link_libraries(rgb_pallet PUBLIC
     SDL3
     window_render
 )
-
-# Tu peux même ajouter une interface ou config CMake plus tard ici
