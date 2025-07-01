@@ -1,0 +1,29 @@
+{
+    "project_name" : "PickleEngineBuilder",
+
+    "version" : {
+        "major" : 0,
+        "midle" : 3,
+        "minor" : 2
+    },
+
+    "dependences" : {
+        "modules" : [
+            "window_render", 
+            "app_loop_sdl3", 
+            "sprite_sdl3"
+        ],
+
+        "libs" : [
+            "SDL3", 
+            "SDL3_image",
+            "entt"
+        ]
+    },
+
+    "credit":{
+        "owner" : "Consolo Alexis",
+        "contributor" : {}
+    }
+
+}
