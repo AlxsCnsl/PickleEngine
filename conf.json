@@ -1,0 +1,6 @@
+{
+    "window" : {
+        "max_fps" : 60,
+        "full_screen_to_launch" : true
+    }
+}
