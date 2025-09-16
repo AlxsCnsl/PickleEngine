@@ -11,6 +11,8 @@
 #include<iostream>
 #include<memory>
 
+#include "include/player.hpp"
+
 int main (){
     // Utiliser des pointeurs intelligents
     auto window = std::make_unique<WindowRender>("ExampleWindow", 500, 500);
@@ -35,7 +37,7 @@ int main (){
         // Créer le sprite ici, une fois que le renderer est prêt
         player = spriteManager.getFactory()->createStaticSprite(
             registry,
-            "assets/psyduck.png",
+            "assets/pickle_square.png",
             x, y,
             0
         );

@@ -16,12 +16,15 @@ AppLoop app = AppLoop(WindowRender* win);
 
 // Defines a callback type that takes a float (delta time)
 using Callback = std::function<void(float)>;
+using EventCallback = std::function<void(const SDL_Event&)>;
 
 // Sets the initialization logic (called once at app start)
 app.setOnInit(Callback cb); // return void
 
 // Sets the update logic (called every frame, receives delta time)
 app.setOnUpdate(Callback cb); // return void
+
+app.setOnEvent(EventCallback cb);
 
 // Sets the rendering logic (called every frame, after update)
 app.setOnRender(Callback cb); // return void

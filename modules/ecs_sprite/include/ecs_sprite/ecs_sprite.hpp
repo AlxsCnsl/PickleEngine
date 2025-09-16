@@ -15,7 +15,7 @@ struct Position {
     
     Position(float x = 0, float y = 0);
 };
-
+ 
 struct Transform {
     float scaleX = 1.0f, scaleY = 1.0f;
     
@@ -23,10 +23,10 @@ struct Transform {
 };
 
 struct SpriteComponent {
-    uint32_t textureId;           // ID de la texture dans le TextureManager
-    SDL_FRect sourceRect;         // Rectangle source dans la texture (pour sprite sheets)
+    uint32_t textureId;// ID de la texture dans le TextureManager
+    SDL_FRect sourceRect;// Rectangle source dans la texture (pour sprite sheets)
     bool visible = true;
-    int layer = 0;                // Ordre de rendu (z-order)
+    int layer = 0;// Ordre de rendu (z-order)
     
     SpriteComponent(uint32_t id, SDL_FRect src = {0, 0, 0, 0});
 };
@@ -34,7 +34,7 @@ struct SpriteComponent {
 struct AnimationComponent {
     uint32_t currentFrame = 0;
     uint32_t frameCount;
-    float frameTime;              // Temps par frame
+    float frameTime;// Temps par frame
     float currentTime = 0.0f;
     bool loop = true;
     bool playing = true;
@@ -128,6 +128,7 @@ public:
     entt::entity createStaticSprite(entt::registry& registry, 
                                    const std::string& texturePath,
                                    float x, float y, int layer = 0);
+                                   
     
     // Crée un sprite animé
     entt::entity createAnimatedSprite(entt::registry& registry,

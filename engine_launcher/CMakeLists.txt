@@ -19,11 +19,12 @@ add_custom_command(TARGET engine_launcher POST_BUILD
     COMMENT "📁 Copie des assets dans le dossier de build..."
 )
 
-# Lien vers les libs SDL
+# Lien vers les libs et module 
 target_link_libraries(engine_launcher PRIVATE
     SDL3
     SDL3_image
     entt
+    ecs_sprite
 )
 
 

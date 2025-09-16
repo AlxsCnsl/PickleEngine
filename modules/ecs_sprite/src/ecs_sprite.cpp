@@ -101,6 +101,7 @@ size_t TextureManager::getTextureCount() const {
     return textures.size();
 }
 
+
 // ========== SYSTEME D'ANIMATION ==========
 
 void AnimationSystem::update(entt::registry& registry, float deltaTime) {
@@ -123,7 +124,7 @@ void AnimationSystem::update(entt::registry& registry, float deltaTime) {
                     anim.playing = false;
                 }
             }
-            
+        
             updateFrameRect(sprite, anim);
         }
     }
@@ -136,6 +137,7 @@ void AnimationSystem::updateFrameRect(SpriteComponent& sprite, const AnimationCo
     sprite.sourceRect.x = anim.currentFrame * frameWidth;
     sprite.sourceRect.w = frameWidth;
 }
+
 
 // ========== SYSTEME DE RENDU ==========
 
