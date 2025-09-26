@@ -2,7 +2,7 @@
 #include <app_loop/app_loop.hpp>
 #include <easy_drawing/easy_drawing.hpp>
 #include <rgb_pallet/rgb_pallet.hpp>
-#include <keyboar_manager/keyboar_manager.hpp>
+#include <keyboard_manager/keyboard_manager.hpp>
 #include <ecs_sprite/ecs_sprite.hpp>
 
 #include<SDL3_image/SDL_image.h>

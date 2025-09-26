@@ -1,7 +1,7 @@
 # modules/<module>/CMakeLists.txt
 cmake_minimum_required(VERSION 3.19) # optional when included, safe
 
-set(MODULE_NAME "sprite_class")
+set(MODULE_NAME "keyboard_manager")
 set(TARGET_NAME "pickle_module_${MODULE_NAME}")
 
 project(${TARGET_NAME} LANGUAGES CXX)
@@ -25,9 +25,7 @@ target_include_directories(${TARGET_NAME}
 target_link_libraries(${TARGET_NAME}
   PUBLIC
     Pickle::Core
-    Pickle::Module::window_render
     SDL3::SDL3
-    SDL3_image::SDL3_image
 )
 
 target_compile_features(${TARGET_NAME} PUBLIC cxx_std_17)

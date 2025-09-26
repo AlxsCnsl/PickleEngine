@@ -1,4 +1,4 @@
-#include <keyboar_manager/keyboar_manager.hpp>
+#include <keyboard_manager/keyboard_manager.hpp>
 #include <algorithm>
 
 namespace KeyboardInput {

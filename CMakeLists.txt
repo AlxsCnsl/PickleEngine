@@ -1,52 +1,60 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.19)
 project(PickleEngine VERSION 0.1.0 LANGUAGES CXX)
 
+# Options
+option(PICKLE_BUILD_TESTS "Build tests" OFF)
+option(PICKLE_BUILD_EXAMPLES "Build examples" OFF)
+option(PICKLE_INSTALL "Generate install rules" ON)
+
+# Policies / build type sensible
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING "Build type" FORCE)
+endif()
+
+# Use modern defaults
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_CXX_STANDARD 20)
+
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(BUILD_SHARED_LIBS OFF)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-# 🎯 Dépendances externes
-add_subdirectory(libs/SDL3)
-add_subdirectory(libs/SDL3_image)
+# Make sure out-of-source builds are used
+if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
+  message(WARNING "In-source build detected. It's recommended to use an out-of-source build.")
+endif()
 
-# 📚 entt (header-only)
-add_library(entt INTERFACE)
-target_include_directories(entt INTERFACE ${CMAKE_SOURCE_DIR}/libs/entt/include)
+# Where to find vendored libs CMake config (SDL3, SDL3_image)
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/libs/SDL3/lib/cmake")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/libs/SDL3_image/lib/cmake")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/libs/entt")
 
-# 🧠 Bibliothèque principale de ton moteur
-add_library(PickleEngine INTERFACE)
-target_include_directories(PickleEngine INTERFACE
-    ${CMAKE_SOURCE_DIR}/core
-    ${CMAKE_SOURCE_DIR}/libs/SDL3/include
-    ${CMAKE_SOURCE_DIR}/libs/SDL3_image/include
-    ${CMAKE_SOURCE_DIR}/libs/entt/include
+find_package(SDL3 REQUIRED CONFIG)
+find_package(SDL3_image REQUIRED CONFIG)
+# EnTT est header-only, tu peux juste inclure
+include_directories("${CMAKE_SOURCE_DIR}/libs/entt/include")
+
+add_library(EnTT INTERFACE)
+target_include_directories(EnTT INTERFACE "${CMAKE_SOURCE_DIR}/libs/entt/include")
+
+
+# Subprojects
+add_subdirectory(core)
+add_subdirectory(libs)        # optional: sets up targets or finds packages
+add_subdirectory(modules)     # will scan modules/ and add each module (voir modules/CMakeLists.txt)
+add_subdirectory(engine_launcher)
+
+# Export package config for installing/using PickleEngine via find_package
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+  "${CMAKE_CURRENT_BINARY_DIR}/PickleEngineConfigVersion.cmake"
+  VERSION ${PROJECT_VERSION}
+  COMPATIBILITY AnyNewerVersion
 )
 
-# 📁 Code de base (core)
-add_subdirectory(core)
-
-# 🧩 Modules (automatisé)
-file(GLOB MODULE_CMAKELISTS RELATIVE ${CMAKE_SOURCE_DIR}/modules/ ${CMAKE_SOURCE_DIR}/modules/*/CMakeLists.txt)
-
-set(MODULE_NAMES "")
-foreach(module_cmakelists ${MODULE_CMAKELISTS})
-    get_filename_component(module_dir ${module_cmakelists} DIRECTORY)
-    message(STATUS "🔗 Ajout automatique du module : ${module_dir}")
-    add_subdirectory(modules/${module_dir})
-    list(APPEND MODULE_NAMES ${module_dir})
-endforeach()
-
-# 🔗 Link tous les modules à PickleEngine automatiquement
-foreach(module_name IN LISTS MODULE_NAMES)
-    if(TARGET ${module_name})
-        target_link_libraries(PickleEngine INTERFACE ${module_name})
-    else()
-        message(WARNING "⚠️ Le module ${module_name} n’a pas défini de target correspondante.")
-    endif()
-endforeach()
-
-
-# 🚀 Application de lancement
-add_subdirectory(engine_launcher)
+# install package config only if requested
+if(PICKLE_INSTALL)
+  install(EXPORT PickleEngineTargets
+          FILE PickleEngineTargets.cmake
+          NAMESPACE Pickle::
+          DESTINATION lib/cmake/PickleEngine)
+endif()

@@ -1,14 +1,41 @@
-add_library(ecs_sprite STATIC
-    src/ecs_sprite.cpp
+# modules/<module>/CMakeLists.txt
+cmake_minimum_required(VERSION 3.19) # optional when included, safe
+
+set(MODULE_NAME "ecs_sprite")
+set(TARGET_NAME "pickle_module_${MODULE_NAME}")
+
+project(${TARGET_NAME} LANGUAGES CXX)
+
+
+
+add_library(${TARGET_NAME} STATIC)
+
+target_sources(${TARGET_NAME}
+  PRIVATE
+    src/${MODULE_NAME}.cpp
 )
 
-target_include_directories(ecs_sprite PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+target_include_directories(${TARGET_NAME}
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include/pickle/modules/${MODULE_NAME}>
 )
 
-target_link_libraries(ecs_sprite PUBLIC
-    SDL3
-    SDL3_image
-    entt
-    window_render
+# link core and any external libs
+target_link_libraries(${TARGET_NAME}
+  PUBLIC
+    Pickle::Core
+    Pickle::Module::window_render
+    SDL3_image::SDL3_image
 )
+
+target_compile_features(${TARGET_NAME} PUBLIC cxx_std_17)
+
+# alias
+add_library(Pickle::Module::${MODULE_NAME} ALIAS ${TARGET_NAME})
+
+# install
+install(TARGETS ${TARGET_NAME} EXPORT PickleEngineTargets
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib)
+install(DIRECTORY include/ DESTINATION include/pickle/modules/${MODULE_NAME})
