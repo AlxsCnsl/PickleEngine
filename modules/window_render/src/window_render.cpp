@@ -11,22 +11,23 @@ WindowRender::~WindowRender() {
     shutdown();
 }
 
-
-
 bool WindowRender::init() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL Init failed: " << SDL_GetError() << std::endl;
         return false;
     }
 
-    window = SDL_CreateWindow(title.c_str(), width, height, SDL_WINDOW_OPENGL);
+    window.reset(SDL_CreateWindow(title.c_str(), width, height, SDL_WINDOW_OPENGL));
     if (!window) {
         std::cerr << "Window creation failed: " << SDL_GetError() << std::endl;
         return false;
     } 
 
-    renderer = SDL_CreateRenderer(window, NULL);
+    renderer.reset(SDL_CreateRenderer(window.get(), NULL));
     if (!renderer) {
+        SDL_DestroyWindow(window.get());
+        window = nullptr;
+        SDL_Quit();
         std::cerr << "Renderer creation failed: " << SDL_GetError() << std::endl;
         return false;
     }
@@ -36,18 +37,16 @@ bool WindowRender::init() {
 
 
 void WindowRender::renderClear() {
-    SDL_SetRenderDrawColor(renderer, clear_rgb.red, clear_rgb.green, clear_rgb.blue, 255);
-    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer.get(), clear_rgb.red, clear_rgb.green, clear_rgb.blue, 255);
+    SDL_RenderClear(renderer.get());
 }
 
 void WindowRender::renderPresent(){
-    SDL_RenderPresent(renderer);
+    SDL_RenderPresent(renderer.get());
 }
 
 
 void WindowRender::shutdown() {
-    if (renderer) SDL_DestroyRenderer(renderer);
-    if (window) SDL_DestroyWindow(window);
     SDL_Quit();
 }
 
@@ -58,15 +57,14 @@ void WindowRender::setClearRGB(Uint8 r, Uint8 g, Uint8 b){
     clear_rgb.blue = b;
 }
 
-
 void WindowRender::setClearRGBA(Uint8 r, Uint8 g, Uint8 b, Uint8 a){
     setClearRGB(r, g, b);
-    clear_rgb.aplpha = a;
+    clear_rgb.alpha = a;
 }
 
 void WindowRender::setClearRGBA(SDL_Color rgb){
     clear_rgb.red = rgb.r;
     clear_rgb.green = rgb.g;
     clear_rgb.blue = rgb.b;
-    clear_rgb.aplpha = rgb.a;
+    clear_rgb.alpha = rgb.a;
 }

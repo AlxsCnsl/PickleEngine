@@ -27,6 +27,7 @@ target_link_libraries(${TARGET_NAME}
     Pickle::Core
     Pickle::Module::window_render
     SDL3_image::SDL3_image
+    entt
 )
 
 target_compile_features(${TARGET_NAME} PUBLIC cxx_std_17)

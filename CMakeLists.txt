@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.19)
 project(PickleEngine VERSION 0.1.0 LANGUAGES CXX)
 
+
+# Functions .cmake/functions.cmake
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+include(functions)
+
 # Options
 option(PICKLE_BUILD_TESTS "Build tests" OFF)
 option(PICKLE_BUILD_EXAMPLES "Build examples" OFF)
@@ -12,11 +17,11 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 # Use modern defaults
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Make sure out-of-source builds are used
 if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
@@ -31,16 +36,15 @@ list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/libs/entt")
 find_package(SDL3 REQUIRED CONFIG)
 find_package(SDL3_image REQUIRED CONFIG)
 # EnTT est header-only, tu peux juste inclure
-include_directories("${CMAKE_SOURCE_DIR}/libs/entt/include")
-
 add_library(EnTT INTERFACE)
 target_include_directories(EnTT INTERFACE "${CMAKE_SOURCE_DIR}/libs/entt/include")
 
 
 # Subprojects
+#The order is important
 add_subdirectory(core)
-add_subdirectory(libs)        # optional: sets up targets or finds packages
-add_subdirectory(modules)     # will scan modules/ and add each module (voir modules/CMakeLists.txt)
+add_subdirectory(libs)
+add_subdirectory(modules)     # will scan modules/ and add each module (seen modules/CMakeLists.txt)
 add_subdirectory(engine_launcher)
 
 # Export package config for installing/using PickleEngine via find_package
@@ -52,9 +56,9 @@ write_basic_package_version_file(
 )
 
 # install package config only if requested
-if(PICKLE_INSTALL)
-  install(EXPORT PickleEngineTargets
-          FILE PickleEngineTargets.cmake
-          NAMESPACE Pickle::
-          DESTINATION lib/cmake/PickleEngine)
-endif()
+#if(PICKLE_INSTALL)
+#  install(EXPORT PickleEngineTargets
+#          FILE PickleEngineTargets.cmake
+#          NAMESPACE Pickle::
+#          DESTINATION lib/cmake/PickleEngine)
+#endif()

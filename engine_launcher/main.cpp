@@ -8,10 +8,13 @@
 #include<SDL3_image/SDL_image.h>
 #include<SDL3/SDL.h>
 #include<entt/entt.hpp>
+
 #include<iostream>
 #include<memory>
 
+
 int main (){
+
     // Utiliser des pointeurs intelligents
     auto window = std::make_unique<WindowRender>("ExampleWindow", 500, 500);
     auto app = std::make_unique<AppLoop>(window.get()); // Passer le pointeur brut à AppLoop
@@ -19,7 +22,9 @@ int main (){
     float x = 250; // Centrer initialement
     float y = 250;
     float velocity = 100;
-    KeyboardInput::KeyboardManager keyboard;
+    
+    auto keyboard = std::make_unique<KeyboardInput::KeyboardManager>();
+
     SpriteManager spriteManager(window.get());
     entt::registry registry;
     
@@ -27,7 +32,7 @@ int main (){
 
     app->setOnInit([&](float deltatime){
         app->getWindow()->setClearRGBA(PKRGB::L_GRAY);
-        keyboard.initialize();
+        keyboard->initialize();
         
         std::cout << "Keyboard manager initialized" << std::endl;
         std::cout << "Renderer ready, loading sprite..." << std::endl;
@@ -48,27 +53,27 @@ int main (){
     });
 
     app->setOnEvent([&](const SDL_Event& event){
-        keyboard.handleEvent(event);
+        keyboard->handleEvent(event);
         
     });
 
     app->setOnUpdate([&](float deltatime){
-        keyboard.update();
+        keyboard->update();
     
         // Logique de mouvement (corrigée pour AZERTY)
-        if (keyboard.isKeyDown(SDL_SCANCODE_A)) {  // A pour aller à gauche
+        if (keyboard->isKeyDown(SDL_SCANCODE_A)) {  // A pour aller à gauche
             x -= velocity * deltatime;
             std::cout << "A pressed - x: " << x << std::endl;   
         }
-        if (keyboard.isKeyDown(SDL_SCANCODE_D)) {  // D pour aller à droite
+        if (keyboard->isKeyDown(SDL_SCANCODE_D)) {  // D pour aller à droite
             x += velocity * deltatime;
             std::cout << "D pressed - x: " << x << std::endl;
         }
-        if (keyboard.isKeyDown(SDL_SCANCODE_W)) {  // W pour aller en haut 
+        if (keyboard->isKeyDown(SDL_SCANCODE_W)) {  // W pour aller en haut 
             y -= velocity * deltatime;
             std::cout << "W pressed - y: " << y << std::endl;
         }
-        if (keyboard.isKeyDown(SDL_SCANCODE_S)) {  // S pour aller en bas
+        if (keyboard->isKeyDown(SDL_SCANCODE_S)) {  // S pour aller en bas
             y += velocity * deltatime;
             std::cout << "S pressed - y: " << y << std::endl;
         }
@@ -90,7 +95,7 @@ int main (){
     });
 
     app->setOnShutdown([&](float deltatime){
-        keyboard.shutdown();
+        keyboard->shutdown();
         std::cout << "Shutting down..." << std::endl;
     });
 
