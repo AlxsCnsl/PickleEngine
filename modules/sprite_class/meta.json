@@ -1,9 +1,0 @@
-{
-    "name" : "sprite_class",
-    "description" : "This is à module : sprite_class",
-    "dependences" : {
-        "libs" : ["SDL3", "SDL3_image"],
-        "modules" : ["window_render"]  
-    },
-    "fonctions" :[]
-}

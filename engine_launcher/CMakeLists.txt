@@ -15,7 +15,6 @@ target_link_libraries(engine_launcher PRIVATE
   Pickle::Module::keyboard_manager
   Pickle::Module::ecs_sprite
   Pickle::Module::rgb_pallet
-  Pickle::Module::sprite_class
 
   #link libs
   SDL3::SDL3
