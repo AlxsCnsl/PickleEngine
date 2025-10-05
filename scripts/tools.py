@@ -5,6 +5,10 @@ scripts = [
     {
         "name":"new_module", 
         "args":["[module name]"],
+    },
+    {
+        "name":"remake_module",
+        "args": ["[moudule name]"],
     }
 ]
 

@@ -13,14 +13,21 @@
 
 ---
 
-## 📦 Included Modules
+## 📦 Included Modules And Libs
 
-| Module Name         | Description                               | Documentation              |
-|---------------------|-------------------------------------------|----------------------------|
-| `window_render`     | Simplified classes for SDL3 windows       |[window_render docs](https://github.com/AlxsCnsl/PickleEngine/blob/main/modules/window_render/README.md)|
-| `app_loop`          | Simplified loops for your app             |[app_loop docs](https://github.com/AlxsCnsl/PickleEngine/blob/main/modules/app_loop/README.md)|
-|`easy_drawing`|Simplified functions for draw primitives|[easy_drawing](https://github.com/AlxsCnsl/PickleEngine/blob/main/modules/easy_drawing/README.md)|
----
+### Libs (statique)
+
+- SDL3
+- SDL3_image
+- entt
+
+### Modules
+- window_render
+- app_loop
+- easy_drawing
+- rgb_pallet
+- ecs_sprite (IA)
+- keyboard_manager (IA)
 
 ## 🔧 Building
 
@@ -29,6 +36,11 @@
 - CMake (>= 3.20)
 - A C++20-compatible compiler
 - ninja : Installation docs [here](https://github.com/ninja-build/ninja)
+- python3
+
+#### For Windows compilation on linux
+
+- ???
 
 ### Instructions
 
@@ -36,13 +48,11 @@
 git clone https://github.com/your-username/PickleEngine.git
 cd PickleEngine
 chmod +x scripts/chmoderall.sh
-./scripts/update_sdl3.sh
 ```
 
 ## 🎮 Developing Your Game
-Use the 'main.cpp' file located in 'engine_launcher' as the root of your game.
+Use the 'main.cpp' file located in '/engine_launcher' as the root of your game.
 Feel free to modify and customize it as needed.
-A 'conf.json' file is provided for some modules or for your own configuration.
 
 ### Build
 ```
@@ -56,17 +66,20 @@ A 'conf.json' file is provided for some modules or for your own configuration.
 ```
 ### Run
 ```
-./build/bin/engine_launcher
+#linux
+./build-linux/bin/engine_launcher
 ```
 
 ## 🧩 Creating a Module
 
 ### Generate a basic module skeleton
+
 ```bash
-./script/new_module.sh
+python /script/tools.py new_module name_of_new_module
 ```
 
 ### Edit meta.json as needed
+
 ```json
 {
     "name": "example_module",
