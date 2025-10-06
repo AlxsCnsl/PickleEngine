@@ -1,9 +1,20 @@
 {
     "name" : "ecs_sprite",
     "description" : "This is à module : ecs_sprite",
-    "dependences" : {
-        "libs" : ["SDL3"],
-        "modules" : []  
-    },
-    "fonctions" :[]
+  "alias": {
+    "namespace": "Pickle",
+    "subnamespace": "Module"
+  },
+  "dependencies": {
+    "libs": [
+      "SDL3_image::SDL3_image",
+      "entt"
+    ],
+    "modules": {
+      "Pickle::Module": [
+        "window_render"
+      ]
+    }
+  },
+  "functions": []
 }

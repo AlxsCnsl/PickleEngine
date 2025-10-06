@@ -54,8 +54,9 @@ class NewModule(ModuleScript):
         dir_path.mkdir(parents=True, exist_ok=True)
         header_path = dir_path /header_file
         with header_path.open("w", encoding="utf8" ) as f:
-            f.write(f"""#include <SDL3/SDL3.h.hpp>
-    // other module""")
+            f.write(f"""#pragma once
+#include <SDL3/SDL.h>
+// other module""")
         print(f"{header_file} was created")
 
 

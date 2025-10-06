@@ -1,9 +1,15 @@
 {
-    "name" : "window_render",
-    "description" : " Simplifies the initialization of windows and rendering for SDL3.",
-    "dependencies" : {
-        "libs" : ["SDL3"],
-        "modules" : []  
-    },
-    "functions" :[]
+  "name" : "window_render",
+  "description" : " Simplifies the initialization of windows and rendering for SDL3.",
+  "alias": {
+    "namespace": "Pickle",
+    "subnamespace": "Module"
+  },
+  "dependencies": {
+    "libs": [
+      "SDL3::SDL3"
+    ],
+    "modules": {}
+  },
+  "functions": []
 }

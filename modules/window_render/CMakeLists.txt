@@ -1,6 +1,4 @@
-# modules/<module>/CMakeLists.txt
-cmake_minimum_required(VERSION 3.19) # optional when included, safe
-
+cmake_minimum_required(VERSION 3.19)
 set(MODULE_NAME "window_render")
 set(TARGET_NAME "pickle_module_${MODULE_NAME}")
 
@@ -10,21 +8,25 @@ project(${TARGET_NAME} LANGUAGES CXX)
 add_library(${TARGET_NAME} STATIC)
 
 target_sources(${TARGET_NAME}
-  PRIVATE
+PRIVATE
     src/${MODULE_NAME}.cpp
 )
 
 target_include_directories(${TARGET_NAME}
-  PUBLIC
+PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include/pickle/modules/${MODULE_NAME}>
 )
 
 # link core and any external libs
 target_link_libraries(${TARGET_NAME}
-  PUBLIC
+PUBLIC
     Pickle::Core
+    #libs
     SDL3::SDL3
+    #modules
+    
+
 )
 
 target_compile_features(${TARGET_NAME} PUBLIC cxx_std_17)

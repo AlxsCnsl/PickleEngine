@@ -1,9 +1,19 @@
 {
     "name" : "easy_drawing",
     "description" : "This is à module : easy_drawing",
-    "dependences" : {
-        "libs" : ["SDL3"],
-        "modules" : ["window_render"]  
-    },
-    "fonctions" :[]
+  "alias": {
+    "namespace": "Pickle",
+    "subnamespace": "Module"
+  },
+  "dependencies": {
+    "libs": [
+      "SDL3::SDL3"
+    ],
+    "modules": {
+      "Pickle::Module": [
+        "window_render"
+      ]
+    }
+  },
+  "functions": []
 }

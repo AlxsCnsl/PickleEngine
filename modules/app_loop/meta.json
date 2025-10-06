@@ -1,9 +1,19 @@
 {
     "name" : "app_loop",
     "description" : "this module simplifies the creation of a main application loop for event-driven SDL3 applications. It allows you to define initialization, update, rendering, and shutdown callbacks in a clean and modular way.",
-    "dependences" : {
-        "libs" : ["SDL3"],
-        "modules" : ["window_render"]  
-    },
-    "fonctions" :[]
+  "alias": {
+    "namespace": "Pickle",
+    "subnamespace": "Module"
+  },
+  "dependencies": {
+    "libs": [
+      "SDL3::SDL3"
+    ],
+    "modules": {
+      "Pickle::Module": [
+        "window_render"
+      ]
+    }
+  },
+  "functions": []
 }

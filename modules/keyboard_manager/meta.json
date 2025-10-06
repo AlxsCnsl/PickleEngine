@@ -1,9 +1,15 @@
 {
     "name" : "keyboar_manager",
     "description" : "This is à module : keyboar_manager",
-    "dependences" : {
-        "libs" : ["SDL3"],
-        "modules" : []
-    },
-    "fonctions" :[]
+  "alias": {
+    "namespace": "Pickle",
+    "subnamespace": "Module"
+  },
+  "dependencies": {
+    "libs": [
+      "SDL3::SDL3"
+    ],
+    "modules": {}
+  },
+  "functions": []
 }

@@ -1,9 +1,15 @@
 {
     "name" : "rgb_pallet",
     "description" : "This is à module : rgb_pallet",
-    "dependences" : {
-        "libs" : ["SDL3"],
-        "modules" : []  
-    },
-    "fonctions" :[]
+  "alias": {
+    "namespace": "Pickle",
+    "subnamespace": "Module"
+  },
+  "dependencies": {
+    "libs": [
+      "SDL3::SDL3"
+    ],
+    "modules": {}
+  },
+  "functions": []
 }
