@@ -1,53 +1,45 @@
 import sys
-from tools.new_modules import new_module
+from tools.new_modules import NewModule
+from tools.cmake_update_module import CmakeUpdateModule
 
 scripts = [
     {
         "name":"new_module", 
-        "args":["[module name]"],
+        "call": lambda:NewModule.call(sys.argv)
     },
     {
-        "name":"remake_module",
-        "args": ["[moudule name]"],
+        "name":"cmku_module", #CMake Update Module
+        "call": lambda:CmakeUpdateModule.call(sys.argv)
     }
 ]
 
-def limit_argc(min, max, name_fun):
-    if len(sys.argv)-1 > max:
-        print(f"too many arguments for {name_fun}")
-        return 0
-    elif len(sys.argv)-1 < min:
-        print(f"missing one or more arguments for {name_fun}")
-        return 0
-    return 1
-
-def print_argv_wanted(wanted):
-    print(wanted)
 
 def get_all_doc():
     docs = ""
     for script in scripts:
-        docs += (f"""\n > {script["name"]}
-    args : {script["args"]}""")
+        docs += (f"""\n > {script["name"]}""")
     return docs
 
 
-def doc ():
+def fast_doc ():
     return f"""---Here are the available scripts---:
 {get_all_doc()}\n
 ------"""
 
 
+def launch_def():
+    for script in scripts : 
+        if script["name"] == sys.argv[1]:
+            return script["call"]()
+    print(f"{sys.argv[1]} does not exist")
+    return print(fast_doc())
+    
+
 def main():
     if len(sys.argv) == 1:
-        return print(doc())
-    match sys.argv[1]:
-        case "new_module":
-            if (limit_argc(2, 2, "new_module")):
-                return new_module(sys.argv[2])
-            return print_argv_wanted("new_module")
-        case _:
-            return print(doc())
+        return print(fast_doc())
+    launch_def()
+    
 
 if __name__ == "__main__":
     main()
