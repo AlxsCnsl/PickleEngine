@@ -1,16 +1,21 @@
 import sys
 from tools.new_modules import NewModule
 from tools.cmake_update_module import CmakeUpdateModule
+from tools.install_lib import LibsInstaller
 
 scripts = [
     {
-        "name":"new_module", 
-        "call": lambda:NewModule.call(sys.argv)
-    },
-    {
         "name":"cmku_module", #CMake Update Module
         "call": lambda:CmakeUpdateModule.call(sys.argv)
-    }
+    },
+    {
+        "name":"install_lib", #install lib
+        "call": lambda:LibsInstaller.call(sys.argv)
+    },
+    {
+        "name":"new_module", #Create new module
+        "call": lambda:NewModule.call(sys.argv)
+    },
 ]
 
 

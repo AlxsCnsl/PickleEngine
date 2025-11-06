@@ -1,6 +1,6 @@
 {
-    "name" : "easy_drawing",
-    "description" : "This is à module : easy_drawing",
+  "name" : "easy_drawing",
+  "description" : "This is à module : easy_drawing",
   "alias": {
     "namespace": "Pickle",
     "subnamespace": "Module"

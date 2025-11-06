@@ -1,6 +1,9 @@
 {
-    "window" : {
-        "max_fps" : 60,
-        "full_screen_to_launch" : true
+    "github_install" : "ssh",
+    "supported_libs_path":"libs.json",
+    "curent_librarys":{
+        "sdl3":"base",
+        "sdl3_image":"base",
+        "entt":"base"
     }
 }

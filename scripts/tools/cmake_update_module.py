@@ -38,16 +38,6 @@ class CmakeUpdateModule(ModuleScript):
             return dependencies
         
 
-    @staticmethod
-    def _getDependeciesList(module_dir:Path): #Useless
-        dependencies = CmakeUpdateModule._getDependenciesJson(module_dir)
-        modules = []
-        for alias in dependencies["modules"]:
-            for module in alias :
-                module+= f"{alias}::{module}"
-        
-
-
     # CMake MODULE ______________________________________________________________________
     def _ArgvIsValid(argv:list[str]):
         size = len(argv)

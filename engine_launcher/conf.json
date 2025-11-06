@@ -1,0 +1,22 @@
+{
+  "name" : "GameForTest",
+  "description" : "...test...",
+  "owner" : "Pickle_Corp",
+  "dependencies": {
+    "libs": [
+      "SDL3::SDL3",
+      "SDL3_image::SDL3_image",
+      "entt"
+    ],
+    "modules": {
+      "Pickle::Module": [
+        "window_render",
+        "app_loop",
+        "easy_drawing",
+        "keyboard_manager",
+        "ecs_sprite",
+        "rgb_pallet"
+      ]
+    }
+  }
+}

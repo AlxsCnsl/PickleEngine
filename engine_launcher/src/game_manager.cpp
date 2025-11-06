@@ -41,7 +41,7 @@ void GameManager::init() {
         registry,
         "assets/psyduck.png",
         x, y,
-        0
+        3
     );
 
     if (player == entt::null) {

@@ -1,6 +1,6 @@
 {
-    "name" : "ecs_sprite",
-    "description" : "This is à module : ecs_sprite",
+  "name" : "ecs_sprite",
+  "description" : "This is à module : ecs_sprite",
   "alias": {
     "namespace": "Pickle",
     "subnamespace": "Module"
