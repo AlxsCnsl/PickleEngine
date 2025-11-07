@@ -2,6 +2,7 @@ import sys
 from tools.new_modules import NewModule
 from tools.cmake_update_module import CmakeUpdateModule
 from tools.install_lib import LibsInstaller
+from tools.utility.const import  BASE_DIR, LIBS_DIR_NAME, SYSTEM
 
 scripts = [
     {
@@ -28,6 +29,7 @@ def get_all_doc():
 
 def fast_doc ():
     return f"""---Here are the available scripts---:
+{SYSTEM}
 {get_all_doc()}\n
 ------"""
 

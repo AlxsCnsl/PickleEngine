@@ -1,57 +1,33 @@
-import json
 import sys
-import subprocess
 import shutil
 from pathlib import Path
-from .ScriptClass import Script
+from tools.ScriptClass import Script
 from rich import print
-import distro
 
-BASE_DIR = Path(__file__).parents[2]
-LIBS_DIR_NAME = "libs"
+from tools.utility.run_commands import run_commands
+from tools.utility.clone_repo import clone_repo
+from tools.utility.const import  BASE_DIR, LIBS_DIR_NAME, SYSTEM, DISTRO, CONF_ENGINE, CONF_ENGINE_FILE_PATH
+from tools.utility.dict import openJsonFile, getDictValue
 
 class LibsInstaller(Script):
   name="install_lib"
 
-
-  #Open Json
-  def _openJsonFile(path:Path):
-    if not path.exists():
-      print(f"file \"{path}\" not found")
-      return None
-    if not path.is_file():
-      print(f" \"{path}\" is not file")
-      return None
-    try:
-      with path.open('r', encoding="utf-8") as f:
-        data = json.load(f)
-    except json.JSONDecodeError as e:
-      print(f"JSON decoding error in \"{path}\": {e}")
-      return None
-    except Exception as e:
-      print(f"Error while reading the file \"{path}\": {e}")
-      return None
-    return data
-
-
   # Get value in conf.json root engine
   def _getConfValueOf(key):
-    conf_file_name = "conf.json"
-    conf_file_path = BASE_DIR / conf_file_name
-    config = LibsInstaller._openJsonFile(conf_file_path)
+    config = CONF_ENGINE
     if config == None:
       return None
     try:
       value = config[key]
     except KeyError:
-      print(f"The key '{key}' is missing from \"{conf_file_path}\".")
+      print(f"The key '{key}' is missing from \"{CONF_ENGINE_FILE_PATH}\".")
       return None
     return value
   
 
   # get Lib Instalable 
   def _supportedLibs(supported_libs_path: Path) -> list[str] :
-    supported_libs_dict = LibsInstaller._openJsonFile(supported_libs_path)
+    supported_libs_dict = openJsonFile(supported_libs_path)
     if supported_libs_dict == None:
       return None
     try:
@@ -64,7 +40,7 @@ class LibsInstaller(Script):
 
   # get lib disposed in conf.json
   def _currentLibs() -> list[str] :
-    current_libs_dict = LibsInstaller._getConfValueOf("curent_librarys")
+    current_libs_dict = getDictValue(CONF_ENGINE, "curent_librarys", CONF_ENGINE_FILE_PATH)
     if current_libs_dict == None:
       return None
     try :
@@ -121,65 +97,22 @@ class LibsInstaller(Script):
       return True
   
 
-  def clone_repo(url, destination, branch):
-    print(f"Cloning [blue]{url}[/blue] to [blue]{destination}[/blue]...\n")
-    process = subprocess.Popen(
-        ["git", "clone", "-b", branch, url, str(destination)],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True,
-        bufsize=1,
-        encoding="utf-8"
-    )
-    for line in process.stdout:
-        print(f"[dim]{line.strip()}[/dim]")
-    process.wait()
-    if process.returncode == 0:
-        print("[bold green]Clone completed successfully![/bold green]")
-    else:
-        print(f"[bold red]Clone failed (exit code {process.returncode})[/bold red]")
-
-
-  def run_commands(commands: list, cwd: Path = None):
-    for cmd in commands:
-      print(f"[bold blue]Running:[/bold blue] {cmd}")
-      process = subprocess.Popen(
-        cmd,
-        cwd=str(cwd) if cwd else None,
-        shell=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True,
-        bufsize=1,
-        encoding="utf-8"
-      )
-      print(process)
-      while True:
-        output = process.stdout.readline()
-        if output == "" and process.poll() is not None:
-          break
-        if output:
-          print(f"[dim]{output.strip()}[/dim]", flush=True)
-      if process.returncode != 0:
-        raise RuntimeError(f"Command failed: {cmd} (exit code {process.returncode})")
-
-
   def compile_lib(destination, command_line = []):
     if not command_line:
       print("[yellow]No compile commands provided.[/yellow]")
       return
-    LibsInstaller.run_commands(command_line, cwd=destination)
+    run_commands(command_line, cwd=destination)
     print("[bold green] Compilation finished successfully![/bold green]")
 
 
   def install_dependencies(deps_dict:dict):
     if not deps_dict: return
-    dist_name = distro.id()
-    if not(dist_name in deps_dict):
-      return print(f"[yellow]no dependency found for {dist_name}[/yellow]")
-    deps_install_cmd = deps_dict[dist_name]
-    LibsInstaller.run_commands([deps_install_cmd])
+    if not(DISTRO in deps_dict):
+      return print(f"[yellow]no dependency found for {DISTRO}[/yellow]")
+    deps_install_cmd = deps_dict[DISTRO]
+    run_commands([deps_install_cmd])
     print("[bold green] dependencies install successfully [/bold green] ")
+
 
   def _installLib(lib:str, lib_file_destination:Path, version_paternes:dict):
     url = version_paternes["ssh"] if LibsInstaller._getConfValueOf("github_install") == "ssh" else version_paternes["http"]
@@ -188,18 +121,18 @@ class LibsInstaller(Script):
       return
     print(f"installing [blue]{lib}[/blue] to [blue]{lib_file_destination}[/blue]")
     LibsInstaller.install_dependencies(version_paternes["deps"])
-    LibsInstaller.clone_repo(url, lib_file_destination,branch)
+    clone_repo(url, lib_file_destination, branch)
     if version_paternes.get("type") == "compiled":
-      if sys.platform.startswith("win"):
-          commands = version_paternes.get("windows_install", [])
+      commands = []
+      if SYSTEM.startswith("win"):
+          commands = version_paternes["windows_install"]
       else:
-          commands = version_paternes.get("linux_install", [])
-    LibsInstaller.compile_lib(lib_file_destination, commands)
-
-
+          commands = version_paternes["linux_install"]
+      LibsInstaller.compile_lib(lib_file_destination, commands)
+    
 
   def get_curent_verison(lib:str) -> str:
-    version = LibsInstaller._getConfValueOf("curent_librarys")[lib]
+    version = getDictValue(CONF_ENGINE, ["curent_librarys", lib], CONF_ENGINE_FILE_PATH)
     return version
   
 
@@ -216,7 +149,7 @@ class LibsInstaller(Script):
       return
     #
     lib_to_install : str = argv[2]
-    all_versions_conf:dict = LibsInstaller._openJsonFile(supported_libs_path)[lib_to_install]
+    all_versions_conf:dict = openJsonFile(supported_libs_path)[lib_to_install]
     lib_dir_name =all_versions_conf["lib_dir_name"]
     lib_version_conf = LibsInstaller.get_curent_verison(lib_to_install)
     curent_version = "0.0.0"

@@ -50,10 +50,12 @@ venv/
 
 #build
 /build/
-/build-linux/
-/build-win/
-/build-mac/
 
 
 #code ditor
 /.vscode/
+
+
+#python
+/__pycache__/
+*.py[cod]

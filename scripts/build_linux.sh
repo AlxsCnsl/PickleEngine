@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e 
-mkdir -p build-linux
-cmake -S . -B build-linux -G Ninja 
-cmake --build build-linux
+mkdir -p build
+cmake -S . -B build -G Ninja 
+cmake --build build
