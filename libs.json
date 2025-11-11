@@ -2,7 +2,6 @@
     "sdl3":{
         "lib_dir_name":"SDL3",
         "base_version":"3.2.24",
-
         "versions":{
             "3.2.24":{
                 "branch":"release-3.2.24",
@@ -36,7 +35,6 @@
     "sdl3_image":{
         "lib_dir_name":"SDL3_Image",
         "base_version":"3.2.4",
-
         "versions":{
             "3.2.4":{
                 "branch":"release-3.2.4",
@@ -66,7 +64,6 @@
     "entt":{
         "lib_dir_name":"EnTT",
         "base_version":"3.15.0",
-
         "versions":{
             "3.15.0":{
                 "branch":"v3.15.0",

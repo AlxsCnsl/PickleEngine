@@ -8,6 +8,9 @@ from tools.utility.dict import openJsonFile
 BASE_DIR = Path(__file__).parents[3]
 LIBS_DIR_NAME = "libs"
 
+#modules
+CONF_MOD_NAME = "meta.json"
+
 #conf
 CONF_ENGINE_FILE_NAME = "conf.json"
 CONF_ENGINE_FILE_PATH = BASE_DIR / CONF_ENGINE_FILE_NAME

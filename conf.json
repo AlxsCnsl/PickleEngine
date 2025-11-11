@@ -1,6 +1,7 @@
 {
     "github_install" : "ssh",
     "supported_libs_path":"libs.json",
+    "compilator_guid_path": "compilguid.json",
     "curent_librarys":{
         "sdl3":"base",
         "sdl3_image":"base",

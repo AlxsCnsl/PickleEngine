@@ -12,19 +12,7 @@ from tools.utility.dict import openJsonFile, getDictValue
 class LibsInstaller(Script):
   name="install_lib"
 
-  # Get value in conf.json root engine
-  def _getConfValueOf(key):
-    config = CONF_ENGINE
-    if config == None:
-      return None
-    try:
-      value = config[key]
-    except KeyError:
-      print(f"The key '{key}' is missing from \"{CONF_ENGINE_FILE_PATH}\".")
-      return None
-    return value
   
-
   # get Lib Instalable 
   def _supportedLibs(supported_libs_path: Path) -> list[str] :
     supported_libs_dict = openJsonFile(supported_libs_path)
@@ -115,7 +103,7 @@ class LibsInstaller(Script):
 
 
   def _installLib(lib:str, lib_file_destination:Path, version_paternes:dict):
-    url = version_paternes["ssh"] if LibsInstaller._getConfValueOf("github_install") == "ssh" else version_paternes["http"]
+    url = version_paternes["ssh"] if getDictValue(CONF_ENGINE, "github_install", CONF_ENGINE_FILE_PATH)== "ssh" else version_paternes["http"]
     branch = version_paternes["branch"]
     if(not LibsInstaller.confirm_delete_exist_dir(lib, lib_file_destination)):
       return
@@ -138,7 +126,7 @@ class LibsInstaller(Script):
 
   @staticmethod
   def call(argv:list[str]): #======================================================================
-    supported_libs_file_name = LibsInstaller._getConfValueOf("supported_libs_path")
+    supported_libs_file_name = getDictValue(CONF_ENGINE, "supported_libs_path", CONF_ENGINE_FILE_PATH)
     if supported_libs_file_name is None:
       print(f"Stop of [purple]{LibsInstaller.name}[/purple]")
       return
