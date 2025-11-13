@@ -1,4 +1,6 @@
 from pathlib import Path
+from rich import print
+from .pk_rich import rich_path, rich_success
 
 def edit_cmake_module(module_dir: Path, name_module:str, 
     dependencies:dict = {
@@ -15,7 +17,6 @@ f'set(MODULE_NAME "{name_module}")'+
 set(TARGET_NAME "pickle_module_${MODULE_NAME}")
 
 project(${TARGET_NAME} LANGUAGES CXX)
-
 
 add_library(${TARGET_NAME} STATIC)
 
@@ -57,8 +58,8 @@ install(TARGETS ${TARGET_NAME} EXPORT PickleEngineTargets
         LIBRARY DESTINATION lib)
 install(DIRECTORY include/ DESTINATION include/pickle/modules/${MODULE_NAME})"""
           )
-  print("CMakeLists.txt was ready")
-
+  
+  print(f"{rich_path(cmake_path)} {rich_success("was written successfully")}")
 
 
 def edit_cmake_libs_project():

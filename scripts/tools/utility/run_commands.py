@@ -2,13 +2,14 @@ from pathlib import Path
 import subprocess
 from rich import print
 from tools.utility.const import BASE_DIR
+from .pk_rich import rich_path, rich_command, bold, rich_error
 
 
-def run_command(cmd: str, cwd: Path = None):
+def run_command(cmd:str, cwd:Path=BASE_DIR):
   """
   Runs a command and prints its output if there is any.
   """
-  print(f"[bold blue]Running:[/bold blue] {cmd}")
+  print(f"{rich_command(f"{bold("Running:")} {cmd}")} from {rich_path(cwd)}")
   process = subprocess.Popen(
     cmd,
     cwd=str(cwd) if cwd else None,
@@ -26,10 +27,10 @@ def run_command(cmd: str, cwd: Path = None):
     if output:
       print(f"[dim]{output.strip()}[/dim]", flush=True)
   if process.returncode != 0:
-    raise RuntimeError(f"Command failed: {cmd} (exit code {process.returncode})")
+    raise RuntimeError(f"{rich_error(f"Command failed: {cmd} (exit code {process.returncode})")}")
 
 
-def run_commands(commands: list, cwd: Path = BASE_DIR ):
+def run_commands(commands:list, cwd:Path=BASE_DIR ):
   """
   Runs a list of commands.
 

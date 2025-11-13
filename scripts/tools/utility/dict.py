@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 from rich import print
-
+from .pk_rich import rich_path, rich_error, bold
 
 def openJsonFile(path:Path):
   """
@@ -13,19 +13,19 @@ def openJsonFile(path:Path):
     - or other errors.
   """
   if not path.exists():
-    print(f"[bold red]file \"{path}\" not found [/bold red]")
+    print(bold(rich_error(f"file {rich_path(path)} not found")))
     return None
   if not path.is_file():
-    print(f"[bold red] \"{path}\" is not file [/bold red]")
+    print(bold(rich_error(f"{rich_path(path)} is not file")))
     return None
   try:
     with path.open('r', encoding="utf-8") as f:
       data = json.load(f)
   except json.JSONDecodeError as e:
-    print(f"[bold red]JSON decoding error in \"{path}\": {e}[/bold red]")
+    print(bold(rich_error(f"JSON decoding error in {rich_path(path)}: {e}")))
     return None
   except Exception as e:
-    print(f"[bold red]Error while reading the file \"{path}\": {e}[/bold red]")
+    print([bold(rich_error(f"Error while reading the file {rich_path(path)}: {e}"))])
     return None
   return data
 
@@ -51,7 +51,7 @@ def getDictValue(data_dict:dict, keys:str|list[str], json_path:Path=None):
       current_data = current_data[key]
     except KeyError:
       if json_path:
-        print(f"[bold red]The key '{key}' is missing from \"{json_path}\".[bold red]")
+        print(f"[bold red]The key '{key}' is missing from {rich_path(json_path)}.[bold red]")
         return None
       print (f"[bold red]The key '{key}' is missing on {data_dict}. [bold red]")
       return None

@@ -2,9 +2,12 @@ import json
 from pathlib import Path
 import json
 
+
+from rich import print
 from .utility.cmake import edit_cmake_module
 from .utility.dict import openJsonFile, getDictValue
 from .utility.const import CONF_MOD_NAME
+from .utility.pk_rich import rich_path, rich_error, rich_success, rich_module, bold
 
 BASE_DIR = Path(__file__).parents[2]
 MODULES_DIR = BASE_DIR / "modules"
@@ -17,10 +20,10 @@ class CmakeUpdateModule():
   @staticmethod
   def _moduleExists(module_dir: Path, name_module: str):
     if module_dir.exists():
-      print(f"----start of the reissue of \"{name_module}\" module----")
+      print(f"start of the reissue of {rich_module(bold(name_module))} module")
       return True
     else:
-      print(f"----\"{name_module}\" module does not exist----")
+      print(rich_error(f"{rich_module(bold(name_module))} module does not exist"))
       return False
 
 
@@ -49,17 +52,17 @@ class CmakeUpdateModule():
   @staticmethod
   def call(argv:list[str]):
     if not CmakeUpdateModule._ArgvIsValid(argv):
-      return print(f"Stop of \"{CmakeUpdateModule.name}\".")
-    name_module = argv[2]
+      return print(rich_error([f"ERROR of {CmakeUpdateModule.name}"]))
+    module_name = argv[2]
     if MODULES_DIR.exists():
-      module_dir = MODULES_DIR / name_module
+      module_dir = MODULES_DIR / module_name
       dependencies = CmakeUpdateModule._getDependencies(module_dir)
-      if(not CmakeUpdateModule._moduleExists(module_dir, name_module)):
+      if(not CmakeUpdateModule._moduleExists(module_dir, module_name)):
         return
-      edit_cmake_module(module_dir, name_module, dependencies)
-      print(f"CMakeLsist module {name_module} as update in {module_dir}")
+      edit_cmake_module(module_dir, module_name, dependencies)
+      print(rich_success(f"CMakeLsist module {rich_module(module_name)} as update in {rich_path(module_dir)}"))
     else:
-      print(f"Modules folder {MODULES_DIR} not found")
+      print(rich_error(f"Modules folder {rich_path(MODULES_DIR)} not found"))
 
 
   @staticmethod

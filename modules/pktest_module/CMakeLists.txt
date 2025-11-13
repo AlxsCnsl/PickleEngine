@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
-set(MODULE_NAME "window_render")
+set(MODULE_NAME "pktest_module")
 set(TARGET_NAME "pickle_module_${MODULE_NAME}")
 
 project(${TARGET_NAME} LANGUAGES CXX)
@@ -24,7 +24,7 @@ PUBLIC
     #libs
     SDL3::SDL3
     #modules
-    
+    Pickle::Module::window_render
 
 )
 
