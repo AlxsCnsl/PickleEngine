@@ -35,30 +35,35 @@
 
 - CMake (>= 3.20)
 - A C++20-compatible compiler
-- ninja : Installation docs [here](https://github.com/ninja-build/ninja)
+- ninja : [Installation docs here](https://github.com/ninja-build/ninja)
 - python3
 
 ### Instructions
 
 ```bash
-#clone
+#LINUX / MACOS
 git clone https://github.com/your-username/PickleEngine.git
 cd PickleEngine
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+
+#WINDOWS
+git clone https://github.com/your-username/PickleEngine.git
+cd PickleEngine
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
 ## 🎮 Developing Your Game
 Use the 'main.cpp' file located in '/engine_launcher' as the root of your game.
 Feel free to modify and customize it as needed.
 
-### Build
+### Build a project 
 ```
-#linux 
-./scripts/build_linux.sh 
-./scripts/build_linux_release.sh #for_publishing
-
-#macos
-
-#windows
+python3 scripts/tools.py compile --dev
 ```
 ### Run
 ```
