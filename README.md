@@ -38,16 +38,12 @@
 - ninja : Installation docs [here](https://github.com/ninja-build/ninja)
 - python3
 
-#### For Windows compilation on linux
-
-- ???
-
 ### Instructions
 
 ```bash
+#clone
 git clone https://github.com/your-username/PickleEngine.git
 cd PickleEngine
-chmod +x scripts/chmoderall.sh
 ```
 
 ## 🎮 Developing Your Game

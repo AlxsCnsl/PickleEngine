@@ -10,7 +10,7 @@ COLOR = {
   "module": "#CD9600",
   "error": "#C93535",
   "warn" : "#B3BD48",
-  "success": "#2E9856",
+  "success": "#1AC65C",
   "command": "#4348D5"
 }
 
@@ -18,7 +18,7 @@ def rich_file(child:str):
   return f"[{COLOR["file"]}]{child}[/{COLOR["file"]}]"
 
 def rich_path(path: Path, end = ""):
-  slash = "/" if "win" not in SYSTEM else "\\"
+  slash = "/" if not SYSTEM.startswith("win") else "\\"
   return f"[{COLOR["path"]}]{path.parent}{slash}[/{COLOR["path"]}]" \
     f"[bold {COLOR["file"]}]{path.name}[/bold {COLOR["file"]}]{end}"
 

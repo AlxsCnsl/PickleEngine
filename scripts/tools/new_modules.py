@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from rich import print
 
+from .ScriptClass import Script
 from .utility.cmake import edit_cmake_module
 from .utility.pk_rich import rich_error, rich_file, rich_module, rich_path, bold, rich_command
 
@@ -9,7 +10,7 @@ BASE_DIR = Path(__file__).parents[2]
 MODULES_DIR = BASE_DIR / "modules"
 
 
-class NewModule:
+class NewModule(Script):
     name="new_module"
 
 
@@ -77,7 +78,7 @@ class NewModule:
 
     # New MODULE ________________________________________________________________________
 
-    def ArgvIsValid(argv:list[str]):
+    def argvIsValid(argv:list[str]):
         size = len(argv)
         if size <= 2:
             NewModule.doc()
@@ -87,7 +88,7 @@ class NewModule:
 
     @staticmethod
     def call(argv:list[str]):
-        if not NewModule.ArgvIsValid(argv):
+        if not NewModule.argvIsValid(argv):
             return print(rich_error(f"Stop of {rich_command(NewModule.name)}."))
         
         name_module = argv[2]

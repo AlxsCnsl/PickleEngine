@@ -11,6 +11,10 @@ LIBS_DIR_NAME = "libs"
 #modules
 CONF_MOD_NAME = "meta.json"
 
+#launcher
+LAUNCHER_DIR_NAME = "engine_launcher"
+LAUNCHER_DIR_PATH = BASE_DIR / LAUNCHER_DIR_NAME
+
 #conf
 CONF_ENGINE_FILE_NAME = "conf.json"
 CONF_ENGINE_FILE_PATH = BASE_DIR / CONF_ENGINE_FILE_NAME

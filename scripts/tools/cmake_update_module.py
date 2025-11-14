@@ -2,8 +2,8 @@ import json
 from pathlib import Path
 import json
 
-
 from rich import print
+from .ScriptClass import Script
 from .utility.cmake import edit_cmake_module
 from .utility.dict import openJsonFile, getDictValue
 from .utility.const import CONF_MOD_NAME
@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).parents[2]
 MODULES_DIR = BASE_DIR / "modules"
 
 
-class CmakeUpdateModule():
+class CmakeUpdateModule(Script):
   name="cmk_module"
 
 

@@ -2,6 +2,7 @@ import sys
 from tools.new_modules import NewModule
 from tools.cmake_update_module import CmakeUpdateModule
 from tools.install_lib import LibsInstaller
+from tools.project_compiler import ProjectCompliler
 from tools.utility.const import  SYSTEM
 
 scripts = [
@@ -17,6 +18,10 @@ scripts = [
         "name":"new_module", #Create new module
         "call": lambda:NewModule.call(sys.argv)
     },
+    {
+        "name":"compile", #Compile curent Project
+        "call": lambda:ProjectCompliler.call(sys.argv)
+    },
 ]
 
 
@@ -29,9 +34,7 @@ def get_all_doc():
 
 def fast_doc ():
     return f"""---Here are the available scripts---:
-
 {get_all_doc()}\n
-
 ------"""
 
 
