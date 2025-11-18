@@ -3,8 +3,9 @@
     "supported_libs_path":"libs.json",
     "compilator_guid_path": "compilguid.json",
     "curent_librarys":{
-        "sdl3":"base",
-        "sdl3_image":"base",
-        "entt":"base"
+        "sdl3":"3.2.26",
+        "sdl3_image":"3.2.4",
+        "sdl3_ttf":"3.2.2",
+        "entt":"3.15.0"
     }
 }

@@ -1,10 +1,10 @@
 {
     "sdl3":{
         "lib_dir_name":"SDL3",
-        "base_version":"3.2.24",
+        "base_version":"3.2.26",
         "versions":{
-            "3.2.24":{
-                "branch":"release-3.2.24",
+            "3.2.26":{
+                "branch":"release-3.2.26",
                 "http":"https://github.com/libsdl-org/SDL.git",
                 "ssh":"git@github.com:libsdl-org/SDL.git",
                 "type":"compiled",
@@ -29,7 +29,8 @@
                     "cd build && cmake --install . --prefix ../install --config Release"
                 ],
                 "import_path":"install"
-    }}},
+            }
+    }},
 
 
     "sdl3_image":{
@@ -54,6 +55,39 @@
                     "if exist install rmdir /s /q install",
                     "mkdir build && cd build",
                     "cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DSDL_STATIC=ON -DSDL_SHARED=OFF -DCMAKE_PREFIX_PATH=../SDL3/install -DCMAKE_INSTALL_PREFIX=../install",
+                    "cd build && cmake --build . --config Release -j%NUMBER_OF_PROCESSORS%",
+                    "cd build && cmake --install . --prefix ../install --config Release"
+                ],
+                "import_path":"install"
+    }}},
+
+
+    "sdl3_ttf":{
+        "lib_dir_name":"SDL3_ttf",
+        "base_version":"3.2.2",
+        "versions":{
+            "3.2.2":{
+                "branch":"release-3.2.2",
+                "http":"https://github.com/libsdl-org/SDL_ttf.git",
+                "ssh":"git@github.com:libsdl-org/SDL_ttf.git",
+                "type":"compiled",
+                "deps":{
+                    "ubuntu":"sudo apt-get install -y libfreetype6-dev libharfbuzz-dev",
+                    "debian":"sudo apt-get install -y libfreetype6-dev libharfbuzz-dev",
+                    "arch":"sudo pacman -S freetype2 harfbuzz"
+                },
+                "linux_install":[
+                    "rm -rf build install",
+                    "mkdir build",
+                    "cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DSDL3TTF_SAMPLES=OFF -DSDL3TTF_TESTS=OFF -DSDL3TTF_SHARED=OFF -DSDL3TTF_STATIC=ON -DCMAKE_PREFIX_PATH=../SDL3/install -DCMAKE_INSTALL_PREFIX=../install",
+                    "cd build && cmake --build . -j$(nproc)",
+                    "cd build && cmake --install . --prefix ../install"
+                ],
+                "windows_install":[
+                    "if exist build rmdir /s /q build",
+                    "if exist install rmdir /s /q install",
+                    "mkdir build",
+                    "cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DSDL3TTF_SAMPLES=OFF -DSDL3TTF_TESTS=OFF -DSDL3TTF_SHARED=OFF -DSDL3TTF_STATIC=ON -DCMAKE_PREFIX_PATH=../SDL3/install -DCMAKE_INSTALL_PREFIX=../install",
                     "cd build && cmake --build . --config Release -j%NUMBER_OF_PROCESSORS%",
                     "cd build && cmake --install . --prefix ../install --config Release"
                 ],
