@@ -18,10 +18,8 @@ PUBLIC
     $<INSTALL_INTERFACE:include/pickle/modules/${MODULE_NAME}>
 )
 
-# link core and any external libs
 target_link_libraries(${TARGET_NAME}
 PUBLIC
-    Pickle::Core
     #libs
     SDL3::SDL3
     #modules

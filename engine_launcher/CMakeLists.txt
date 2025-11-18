@@ -4,10 +4,7 @@ add_auto_executable(
     "${CMAKE_CURRENT_SOURCE_DIR}/header"
 )
 
-target_include_directories(engine_launcher PRIVATE ${CMAKE_SOURCE_DIR}/core/include)
-
 target_link_libraries(engine_launcher PRIVATE
-  Pickle::Core
   # link modules you want statically if needed:
   Pickle::Module::window_render
   Pickle::Module::app_loop

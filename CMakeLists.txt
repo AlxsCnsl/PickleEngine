@@ -44,7 +44,6 @@ target_include_directories(entt INTERFACE
 
 # Subprojects
 #The order is important
-add_subdirectory(core)
 add_subdirectory(modules)     # will scan modules/ and add each module (seen modules/CMakeLists.txt)
 add_subdirectory(engine_launcher)
 

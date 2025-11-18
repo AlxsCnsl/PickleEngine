@@ -24,7 +24,6 @@ target_include_directories(${TARGET_NAME}
 # link core and any external libs
 target_link_libraries(${TARGET_NAME}
   PUBLIC
-    Pickle::Core
     Pickle::Module::window_render
     SDL3_image::SDL3_image
     entt

@@ -20,7 +20,6 @@ PUBLIC
 # link core and any external libs
 target_link_libraries(${TARGET_NAME}
 PUBLIC
-    Pickle::Core
     #libs
     SDL3::SDL3
     #modules

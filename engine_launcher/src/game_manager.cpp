@@ -71,7 +71,7 @@ void GameManager::update(float deltatime) {
     }
 
     spriteManager->update(registry, deltatime);
-    spriteManager->printStats(registry);
+    //spriteManager->printStats(registry);
 }
 
 void GameManager::render(float deltatime) {
