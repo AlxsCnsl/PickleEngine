@@ -18,5 +18,6 @@
         "rgb_pallet"
       ]
     }
-  }
+  },
+  "resources_dir_name" : "assets"
 }

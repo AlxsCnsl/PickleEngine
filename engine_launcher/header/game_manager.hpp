@@ -4,6 +4,7 @@
 #include <SDL3/SDL.h>
 #include <entt/entt.hpp>
 
+
 class WindowRender;
 class AppLoop;
 class SpriteManager;

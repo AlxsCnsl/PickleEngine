@@ -71,7 +71,7 @@ class NewModule(Script):
         dir_path.mkdir(parents=True, exist_ok=True)
         header_path = dir_path /source_file
         with header_path.open("w", encoding="utf8" ) as f:
-            f.write(f"#include <{name_module}/{name_module}.hpp>")
+            f.write(f"#include <{name_module}.hpp>")
         print(f"{rich_file(source_file)} was created")
 
 

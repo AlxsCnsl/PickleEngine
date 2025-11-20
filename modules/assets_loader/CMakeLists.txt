@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
-set(MODULE_NAME "app_loop")
+set(MODULE_NAME "assets_loader")
 set(TARGET_NAME "pickle_module_${MODULE_NAME}")
 
 project(${TARGET_NAME} LANGUAGES CXX)
@@ -24,6 +24,7 @@ PUBLIC
     SDL3::SDL3
     #modules
     Pickle::Module::window_render
+
 )
 
 target_compile_features(${TARGET_NAME} PUBLIC cxx_std_17)

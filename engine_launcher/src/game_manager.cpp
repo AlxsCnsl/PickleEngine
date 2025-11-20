@@ -7,6 +7,7 @@
 #include <rgb_pallet/rgb_pallet.hpp>
 #include <keyboard_manager/keyboard_manager.hpp>
 #include <ecs_sprite/ecs_sprite.hpp>
+#include <assets_loader.hpp>
 
 #include <iostream>
 
@@ -39,7 +40,7 @@ void GameManager::init() {
     // Créer le sprite du joueur
     player = spriteManager->getFactory()->createStaticSprite(
         registry,
-        "assets/psyduck.png",
+        getAssetPath("psyduck.png").c_str(),
         x, y,
         3
     );

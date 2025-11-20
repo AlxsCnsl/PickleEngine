@@ -1,6 +1,6 @@
 {
-    "name" : "app_loop",
-    "description" : "this module simplifies the creation of a main application loop for event-driven SDL3 applications. It allows you to define initialization, update, rendering, and shutdown callbacks in a clean and modular way.",
+  "name" : "app_loop",
+  "description" : "this module simplifies the creation of a main application loop for event-driven SDL3 applications. It allows you to define initialization, update, rendering, and shutdown callbacks in a clean and modular way.",
   "alias": {
     "namespace": "Pickle",
     "subnamespace": "Module"

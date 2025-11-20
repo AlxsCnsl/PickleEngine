@@ -10,6 +10,9 @@ include(functions)
 option(PICKLE_BUILD_TESTS "Build tests" OFF)
 option(PICKLE_BUILD_EXAMPLES "Build examples" OFF)
 option(PICKLE_INSTALL "Generate install rules" ON)
+# Variables
+set(PROJECT_DIR_NAME "engine_launcher")
+set(PROJECT_EXECUTABLE_NAME "engine_launcher")
 
 # Policies / build type sensible
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -32,11 +35,15 @@ endif()
 list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/libs/SDL3/install")
 find_package(SDL3 REQUIRED CONFIG)
 
-# SDL3_image-------------------------------------------------------------------
+# SDL3_image ------------------------------------------------------------------
 list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/libs/SDL3_Image/install")
 find_package(SDL3_image REQUIRED CONFIG)
 
-# EnTT (header-only)-----------------------------------------------------------
+# SDL3_ttf --------------------------------------------------------------------
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/libs/SDL3_ttf/install")
+find_package(SDL3_ttf REQUIRED CONFIG)
+
+# EnTT (header-only) ----------------------------------------------------------
 add_library(entt INTERFACE)
 target_include_directories(entt INTERFACE
     ${CMAKE_SOURCE_DIR}/libs/EnTT/src
@@ -46,6 +53,7 @@ target_include_directories(entt INTERFACE
 #The order is important
 add_subdirectory(modules)     # will scan modules/ and add each module (seen modules/CMakeLists.txt)
 add_subdirectory(engine_launcher)
+
 
 # Export package config for installing/using PickleEngine via find_package
 include(CMakePackageConfigHelpers)
