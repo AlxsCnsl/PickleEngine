@@ -24,6 +24,10 @@
 libs/*
 !libs/.keep
 
+#projects
+projects/*
+!projects/.keep
+
 # Fortran module files
 *.mod
 *.smod

@@ -11,8 +11,8 @@ option(PICKLE_BUILD_TESTS "Build tests" OFF)
 option(PICKLE_BUILD_EXAMPLES "Build examples" OFF)
 option(PICKLE_INSTALL "Generate install rules" ON)
 # Variables
-set(PROJECT_DIR_NAME "engine_launcher")
-set(PROJECT_EXECUTABLE_NAME "engine_launcher")
+set(PROJECT_DIR_NAME "psyduck_field")
+set(PROJECT_EXECUTABLE_NAME "psyduck_field")
 
 # Policies / build type sensible
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -52,7 +52,7 @@ target_include_directories(entt INTERFACE
 # Subprojects
 #The order is important
 add_subdirectory(modules)     # will scan modules/ and add each module (seen modules/CMakeLists.txt)
-add_subdirectory(engine_launcher)
+add_subdirectory(projects/${PROJECT_DIR_NAME})
 
 
 # Export package config for installing/using PickleEngine via find_package
