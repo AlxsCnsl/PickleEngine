@@ -19,6 +19,8 @@
 *.dylib
 *.dll
 
+compile_commands.json
+.cache
 
 # libs
 libs/*

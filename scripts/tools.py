@@ -4,6 +4,7 @@ from tools.cmake_update_module import CmakeUpdateModule
 from tools.install_lib import LibsInstaller
 from tools.project_compiler import ProjectCompliler
 from tools.utility.const import  SYSTEM
+from tools.new_project import NewProject
 
 scripts = [
     {
@@ -21,6 +22,10 @@ scripts = [
     {
         "name":"compile", #Compile curent Project
         "call": lambda:ProjectCompliler.call(sys.argv)
+    },
+    {
+        "name":"new_project", #Compile curent Project
+        "call": lambda:NewProject.call(sys.argv)
     },
 ]
 

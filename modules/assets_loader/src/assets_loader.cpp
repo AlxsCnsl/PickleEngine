@@ -7,7 +7,7 @@ std::string getAssetPath(const std::string& filename){
     SDL_Log(msg.c_str());
     return filename;
   }
-  std::string fullPath = std::string(basepath) + "../assets/" + filename;
+  std::string fullPath = std::string(basepath) + "/assets/" + filename;
   SDL_free((void*)basepath);
   return fullPath;
 }

@@ -1,48 +1,72 @@
 from .ScriptClass import Script
 from rich import print
 from .utility.run_commands import run_commands
-from .utility.const import SYSTEM, LAUNCHER_DIR_PATH, BASE_DIR
+from .utility.const import SYSTEM, PROJECTS_DIR_PATH, BUILD_DIR_PATH, BASE_DIR
 from .utility.pk_rich import rich_error
 from .utility.dict import getDictValue, openJsonFile
+import os
 
 class ProjectCompliler(Script):
   name = "project_compiler"
 
 
-  def _linux_compile():
-    cmd = [
-      "mkdir -p build",
-      "cmake -S . -B build -G Ninja",
-      "cmake --build build",
-    ]
+  def _linux_compile(type:str, project:str):
+    cmd : list[str] = []
+    build_dir = BUILD_DIR_PATH / project / f"build-{type}"
+    cmd.append(f"mkdir -p {build_dir}")
+    cmd.append(
+      f'cmake -S . -B {build_dir} '
+      f'-G Ninja -DCMAKE_BUILD_TYPE={type.capitalize()} '
+      f'-DPROJECT_DIR_NAME="{project}" '
+      f'-DPROJECT_EXECUTABLE_NAME="{project}" '
+    )
+    cmd.append(f"cmake --build {build_dir}")
     run_commands(cmd, BASE_DIR)
 
 
-  def _windows_compile():
-      cmd = [
-          "if not exist build mkdir build",
-          "cmake -S . -B build -G Ninja",
-          "cmake --build build",
-      ]
-      run_commands(cmd, BASE_DIR)
+  def _windows_compile(type:str, project:str):
+    cmd : list[str] = []
+    build_dir = BUILD_DIR_PATH / project / f"build-{type}"
+    cmd.append(f'if not exist "{build_dir}" mkdir "{build_dir}"')
+    cmd.append(
+        f'cmake -S . -B "{build_dir}"'
+        f'-G Ninja -DCMAKE_BUILD_TYPE={type.capitalize()} '
+        f'-DPROJECT_DIR_NAME="{project}"'
+        f'-DPROJECT_EXECUTABLE_NAME="{project}"'
+    )
+    cmd.append(f'cmake --build "{build_dir}"')
+    run_commands(cmd, BASE_DIR)
 
 
+  def _isValidProject(project_name:str):
+    project_path = PROJECTS_DIR_PATH / project_name
+    if not os.path.exists(project_path):
+      print ("Le projet n'existe pas");return False
+    if not os.path.isdir(project_path):
+      print ("le projet n'est pas un dossier");return False
+    return True
+    
+    
   def argvIsValid(argv:list[str]):
     size = len(argv)
-    args = ["--dev"]
-    if size <= 2:
+    args = ["debug","release"]
+    if size <= 3:
       ProjectCompliler.doc()
       return False
     if argv[2] not in args:
       return False
+    if not ProjectCompliler._isValidProject(argv[3]):
+      return False
     return True
   
 
-  def call(argvs:list[str]):
-    if not ProjectCompliler.argvIsValid(argvs): return
+  def call(argv:list[str]):
+    if not ProjectCompliler.argvIsValid(argv):
+      print("erreur")
+      return
     if SYSTEM.startswith("win"):
-      return ProjectCompliler._windows_compile()
-    return ProjectCompliler._linux_compile()
+      return ProjectCompliler._windows_compile(argv[2], argv[3])
+    return ProjectCompliler._linux_compile(argv[2], argv[3])
 
   #DOC ______________________________________________________________
   def doc():
@@ -52,7 +76,10 @@ class ProjectCompliler(Script):
 
 >basic commande :
 
-    #compile curent project
-    {ProjectCompliler.name} --dev
+    #compile curent project for debug
+    {ProjectCompliler.name} debug name_project
+
+    ##compile curent project for release
+    {ProjectCompliler.name} release name_project
 
 """)

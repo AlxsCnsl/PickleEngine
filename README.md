@@ -34,6 +34,7 @@
 ### Requirements
 
 - CMake (>= 3.20)
+- clangd
 - A C++20-compatible compiler
 - ninja : [Installation docs here](https://github.com/ninja-build/ninja)
 - python3
