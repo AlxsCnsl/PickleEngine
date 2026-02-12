@@ -1,0 +1,19 @@
+{
+  "name": "assets_loader",
+  "description": "This is a module: assets_loader.",
+  "alias": {
+    "namespace": "Pickle",
+    "subnamespace": "Module"
+  },
+  "dependencies": {
+    "libs": [
+      "SDL3::SDL3"
+    ],
+    "modules": {
+      "Pickle::Module": [
+        "window_render"
+      ]
+    }
+  },
+  "functions": []
+}
