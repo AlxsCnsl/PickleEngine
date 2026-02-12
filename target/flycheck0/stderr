@@ -1,0 +1,523 @@
+   0.011224979s  INFO prepare_target{force=false package_id=pickle-cli v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-cli) target="pickle-cli"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-cli v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-cli)/Check { test: false }/TargetInner { name: "pickle-cli", doc: true, ..: with_path("/home/alexisconsolo/src/PickleEngine/crates/pickle-cli/src/main.rs", Edition2024) }
+   0.011253272s  INFO prepare_target{force=false package_id=pickle-cli v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-cli) target="pickle-cli"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-cli-d6254f9938cfe377/bin-pickle-cli`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.027577852s  INFO prepare_target{force=false package_id=pickle-cli v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-cli) target="pickle-cli"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-cli v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-cli)/Check { test: true }/TargetInner { name: "pickle-cli", doc: true, ..: with_path("/home/alexisconsolo/src/PickleEngine/crates/pickle-cli/src/main.rs", Edition2024) }
+   0.027592031s  INFO prepare_target{force=false package_id=pickle-cli v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-cli) target="pickle-cli"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-cli-9c73f3a2e409507d/test-bin-pickle-cli`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.027764929s  INFO prepare_target{force=false package_id=pickle-commands v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-commands) target="pickle_commands"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-commands v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-commands)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("pickle_commands", ["lib"], "/home/alexisconsolo/src/PickleEngine/crates/pickle-commands/src/lib.rs", Edition2024) }
+   0.027774301s  INFO prepare_target{force=false package_id=pickle-commands v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-commands) target="pickle_commands"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-commands-02268f6f03c7fb68/lib-pickle_commands`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.027909325s  INFO prepare_target{force=false package_id=pickle-commands v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-commands) target="pickle_commands"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-commands v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-commands)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("pickle_commands", ["lib"], "/home/alexisconsolo/src/PickleEngine/crates/pickle-commands/src/lib.rs", Edition2024) }
+   0.027917116s  INFO prepare_target{force=false package_id=pickle-commands v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-commands) target="pickle_commands"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-commands-68a54a7b54329343/test-lib-pickle_commands`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.028049202s  INFO prepare_target{force=false package_id=pickle-config v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-config) target="pickle_config"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-config v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-config)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("pickle_config", ["lib"], "/home/alexisconsolo/src/PickleEngine/crates/pickle-config/src/lib.rs", Edition2024) }
+   0.028056654s  INFO prepare_target{force=false package_id=pickle-config v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-config) target="pickle_config"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-config-3be83b4952632030/lib-pickle_config`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.028186053s  INFO prepare_target{force=false package_id=pickle-config v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-config) target="pickle_config"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-config v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-config)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("pickle_config", ["lib"], "/home/alexisconsolo/src/PickleEngine/crates/pickle-config/src/lib.rs", Edition2024) }
+   0.028193635s  INFO prepare_target{force=false package_id=pickle-config v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-config) target="pickle_config"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-config-b68267c7b7475c09/test-lib-pickle_config`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.028318617s  INFO prepare_target{force=false package_id=pickle-core v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-core) target="pickle_core"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-core v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-core)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("pickle_core", ["lib"], "/home/alexisconsolo/src/PickleEngine/crates/pickle-core/src/lib.rs", Edition2024) }
+   0.028325954s  INFO prepare_target{force=false package_id=pickle-core v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-core) target="pickle_core"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-core-3b9482c54f9282e6/lib-pickle_core`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.028447433s  INFO prepare_target{force=false package_id=pickle-core v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-core) target="pickle_core"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-core v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-core)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("pickle_core", ["lib"], "/home/alexisconsolo/src/PickleEngine/crates/pickle-core/src/lib.rs", Edition2024) }
+   0.028454670s  INFO prepare_target{force=false package_id=pickle-core v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-core) target="pickle_core"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-core-cd5b512d9a199d84/test-lib-pickle_core`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.028573869s  INFO prepare_target{force=false package_id=pickle-plugin-api v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-plugin-api) target="pickle_plugin_api"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-plugin-api v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-plugin-api)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("pickle_plugin_api", ["lib"], "/home/alexisconsolo/src/PickleEngine/crates/pickle-plugin-api/src/lib.rs", Edition2024) }
+   0.028581235s  INFO prepare_target{force=false package_id=pickle-plugin-api v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-plugin-api) target="pickle_plugin_api"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-plugin-api-555007f0d8e52ffb/lib-pickle_plugin_api`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.028707577s  INFO prepare_target{force=false package_id=pickle-plugin-api v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-plugin-api) target="pickle_plugin_api"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-plugin-api v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-plugin-api)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("pickle_plugin_api", ["lib"], "/home/alexisconsolo/src/PickleEngine/crates/pickle-plugin-api/src/lib.rs", Edition2024) }
+   0.028714612s  INFO prepare_target{force=false package_id=pickle-plugin-api v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-plugin-api) target="pickle_plugin_api"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-plugin-api-f80da9ab69993c69/test-lib-pickle_plugin_api`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.028834768s  INFO prepare_target{force=false package_id=pickle-runtime v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-runtime) target="pickle_runtime"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-runtime v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-runtime)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("pickle_runtime", ["lib"], "/home/alexisconsolo/src/PickleEngine/crates/pickle-runtime/src/lib.rs", Edition2024) }
+   0.028841960s  INFO prepare_target{force=false package_id=pickle-runtime v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-runtime) target="pickle_runtime"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-runtime-c0f91621caaf771b/lib-pickle_runtime`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.028974123s  INFO prepare_target{force=false package_id=pickle-runtime v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-runtime) target="pickle_runtime"}: cargo::core::compiler::fingerprint: fingerprint error for pickle-runtime v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-runtime)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("pickle_runtime", ["lib"], "/home/alexisconsolo/src/PickleEngine/crates/pickle-runtime/src/lib.rs", Edition2024) }
+   0.028986847s  INFO prepare_target{force=false package_id=pickle-runtime v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-runtime) target="pickle_runtime"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/alexisconsolo/src/PickleEngine/target/debug/.fingerprint/pickle-runtime-eb8c432e91b5b8f5/test-lib-pickle_runtime`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  16: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  17: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{{closure}}
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:590:40
+  20: std::panicking::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panicking.rs:553:19
+  21: std::panic::catch_unwind
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+    Checking pickle-plugin-api v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-plugin-api)
+    Checking pickle-commands v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-commands)
+    Checking pickle-cli v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-cli)
+    Checking pickle-core v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-core)
+    Checking pickle-runtime v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-runtime)
+    Checking pickle-config v0.1.0 (/home/alexisconsolo/src/PickleEngine/crates/pickle-config)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.27s

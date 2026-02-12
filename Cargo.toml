@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/pickle-core",
+    "crates/pickle-config",
+    "crates/pickle-runtime",
+    "crates/pickle-cli",
+    "crates/pickle-plugin-api",
+    "crates/pickle-commands"
+]

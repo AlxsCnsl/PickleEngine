@@ -1,0 +1,20 @@
+{
+  "name": "fast_debugging",
+  "description": "This is a module: fast_debugging.",
+  "alias": {
+    "namespace": "Pickle",
+    "subnamespace": "Module"
+  },
+  "dependencies": {
+    "libs": [
+      "SDL3::SDL3",
+      "SDL3_ttf::SDL3_ttf"
+    ],
+    "modules": {
+      "Pickle::Module": [
+        "window_render"
+      ]
+    }
+  },
+  "functions": []
+}
